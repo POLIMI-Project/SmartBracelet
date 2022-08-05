@@ -270,7 +270,7 @@ implementation{
 			sendStatus = FALLING;
 
 		}else{
-			//default is standing
+			//default can be put as the first so standing? It should never go there...
 //			sendStatus = STANDING;
 		}
 

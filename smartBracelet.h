@@ -4,12 +4,13 @@
 //////////////////////////////////////////////
 //GLOBAL VARS
 
+//the max number of supported couples, where "total nodes = 2 couples = 4"
+#define C_MAX 2
+#define N_MAX C_MAX*2
+
 //length of the keys
 #define K_LEN 20
 
-//maximum number of supported couples (total nodes = couples*2)
-#define C_MAX 2
-#define N_MAX C_MAX*2
 
 //timers values
 #define T_1 15000
@@ -26,10 +27,10 @@
 #define INFO 2
 
 //info datagram status code
-#define STANDING 10
-#define WALKING 20
-#define RUNNING 30
-#define FALLING 40
+#define STANDING 3
+#define WALKING 4
+#define RUNNING 5
+#define FALLING 6
 
 //////////////////////////////////////////////
 //DATA STRUCTURES
