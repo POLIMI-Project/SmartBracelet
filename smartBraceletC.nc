@@ -36,21 +36,21 @@ implementation{
 	//VARS
 
 	//pre-installed keys
-	uint8_t KeyP[K_LEN]; //parent key
-	uint8_t KeyC[K_LEN]; //child key
+	uint8_t KeyParent[K_LEN]; //parent key
+	uint8_t KeyChild[K_LEN]; //child key
 
 	//unicast address (after a pairing)
-	uint16_t unicastConnectedAddress;
+	uint16_t UnicastPairingAddress; 
 
 	//vars
-	bool paired = FALSE;
+	bool isPaired = FALSE;
 	bool isParent = FALSE;
-	bool ackListener = FALSE;
+	bool AckParent = FALSE;
 
 	//datagram
 	message_t packet;
 
-	//coordinates (last known from child)
+	//coordinates of the bracelets (last known from child)
 	uint16_t coord_X;
 	uint16_t coord_Y;
 
@@ -81,18 +81,18 @@ implementation{
 					//odd nodes
 					//assignment
 					for (i=0; i<K_LEN; i++){
-						KeyP[i] = n;
-						KeyC[i] = n+1;
+						KeyParent[i] = n;
+						KeyChild[i] = n+1;
 					}
-					dbg("node", "[info] Node: %i | KeyP: %ux%i | KeyC: %ux%i\n", n, KeyP[0], K_LEN, KeyC[0], K_LEN);
+					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent[0], K_LEN, KeyChild[0], K_LEN);
 				}else{
 					//even nodes
 					//assignment
 					for (i=0; i<K_LEN; i++){
-						KeyC[i] = n-1;
-						KeyP[i] = n+1-1;
+						KeyParent[i] = n+1-1;
+						KeyChild[i] = n-1;
 					}
-					dbg("node", "[info] Node: %i | KeyP: %ux%i | KeyC: %ux%i\n", n, KeyP[0], K_LEN, KeyC[0], K_LEN);
+					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent[0], K_LEN, KeyChild[0], K_LEN);
 				}
 			}
 		}
@@ -153,51 +153,16 @@ implementation{
 
 	//////////////////////////////////////////////////////////////////////////////
 	//TASKS
-
-	//unicast transmitter for initial pairing phase
-	task void transmitUnicastDatagram() {
-
-		//datagram instantiation
-		pairing_datagram_ack_t* datagram = (pairing_datagram_ack_t*)(call Packet.getPayload(&packet, sizeof(pairing_datagram_ack_t)));
-
-		//passing datagram type
-		datagram->type = UNICAST;
-		
-		//passing datagram ack value (default ack = true)
-		datagram->acknowledgement = 1;
-
-		//log
-		dbg("radioDatagram", "[radio>>] Unicast datagram (pairing ack) to Address: %u is under transmission | Time: %s \n", unicastConnectedAddress, sim_time_string());
-
-		//enable ack listener
-		ackListener = TRUE;
-
-		//request an explicit ack for this transmission
-		call PacketAcknowledgements.requestAck(&packet);
-
-		//transmission result
-		if(call AMSend.send(unicastConnectedAddress, &packet, sizeof(pairing_datagram_ack_t)) == SUCCESS){
-			//transmission success
-			dbg("radioDatagram", "[radio>>] Unicast datagram (pairing ack) to Address: %u | Transmission OK | with content: \n", unicastConnectedAddress);
-			dbg("radioDatagram", "\t Acknowledgement: %u \n", datagram->acknowledgement);
-			dbg("radioDatagram", "\t Type: %u \n", datagram->type);
-			//dbg("radioDatagram", "\n");
-		}else{
-			//transmission error
-			//do nothing (retry next triggering event)
-			;
-		}
-	}
-
+	
 	//broadcast transmitter for initial pairing phase
 	task void transmitBroadcastDatagram() {
 		
 		//var allocation
 		int i;
 
-		if(!paired){
+		if(!isPaired){
 
-			//datagram instantiation
+			//datagram initialization
 			pairing_datagram_t* datagram = (pairing_datagram_t*)(call Packet.getPayload(&packet, sizeof(pairing_datagram_t)));
 			
 			//passing datagram id
@@ -209,7 +174,7 @@ implementation{
 
 			//passing key
 			for (i=0; i<K_LEN; i++){
-				datagram->key[i]= KeyP[i];
+				datagram->key[i]= KeyParent[i];
 			}
 
 			//passing address
@@ -221,19 +186,44 @@ implementation{
 			//transmission result
 			if(call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(pairing_datagram_t)) == SUCCESS){
 				//transmission success
-				dbg("radioDatagram", "[radio>>] Broadcast datagram Id: %u | Transmission OK | with content: \n", datagram->ID);
+				dbg("radioDatagram", "[radio>>] Broadcast datagram Id: %u | Transmission is OK | with content: \n", datagram->ID);
 				dbg("radioDatagram", "\t Key: %ux%i \n", datagram->key[0], K_LEN);
 				dbg("radioDatagram", "\t Address: %u \n", datagram->address);
 				dbg("radioDatagram", "\t Type: %u \n", datagram->type);
-				//dbg("radioDatagram", "\n");
-			}else{
-				//transmission error
-				//do nothing (retry next triggering event)
-				;
 			}
-
 		}
 	}
+
+	//unicast transmitter for pairing phase
+	task void transmitUnicastDatagram() {
+
+		//datagram initialization
+		pairing_datagram_ack_t* datagram = (pairing_datagram_ack_t*)(call Packet.getPayload(&packet, sizeof(pairing_datagram_ack_t)));
+
+		//passing datagram type
+		datagram->type = UNICAST;
+		
+		//passing datagram ack value (default ack = true)
+		datagram->acknowledgement = 1;
+
+		//log
+		dbg("radioDatagram", "[radio>>] Unicast datagram (pairing acknowledgement) to Address: %u is under transmission | Time: %s \n", UnicastPairingAddress, sim_time_string());
+
+		//enable ack listener
+		AckParent = TRUE;
+
+		//request an explicit ack for this transmission
+		call PacketAcknowledgements.requestAck(&packet);
+
+		//transmission result
+		if(call AMSend.send(UnicastPairingAddress, &packet, sizeof(pairing_datagram_ack_t)) == SUCCESS){
+			//transmission success
+			dbg("radioDatagram", "[radio>>] Unicast datagram (pairing acknowledgement) to Address: %u | Transmission is OK | with content: \n", UnicastPairingAddress);
+			dbg("radioDatagram", "\t Acknowledgement: %u \n", datagram->acknowledgement);
+			dbg("radioDatagram", "\t Type: %u \n", datagram->type);
+		}
+	}
+
 
 	//unicast transmitter for info datagrams (from child)
 	task void transmitChildDatagram() {
@@ -247,8 +237,7 @@ implementation{
 		//random generator (1-10)
 		uint16_t rnd = (call Random.rand16() % 10) + 1;
 
-		//random weight assignment
-		// The X, Y coordinates can be random numbers, and the kinematic status should be randomly selected according to a probability distribution, given from the text:
+		// The probability of X, Y coordinates to be on standing, walking and running is of 30%, of falling is set to 10%, so:
 		if(rnd>=1 && rnd<=3){
 			
 			//it is standing
@@ -269,9 +258,6 @@ implementation{
 			//it is falling
 			sendStatus = FALLING;
 
-		}else{
-			//default can be put as the first so standing? It should never go there...
-//			sendStatus = STANDING;
 		}
 
 		//log
@@ -288,7 +274,7 @@ implementation{
 		dbg("radioDatagram", "[radio>>] Child Unicast datagram Id: %u is under transmission | Time: %s \n", datagram->ID,  sim_time_string());
 
 		//transmission result
-		if(call AMSend.send(unicastConnectedAddress, &packet, sizeof(info_datagram_t)) == SUCCESS){
+		if(call AMSend.send(UnicastPairingAddress, &packet, sizeof(info_datagram_t)) == SUCCESS){
 			//transmission success
 			dbg("radioDatagram", "[radio>>] Child Unicast datagram Id: %u | Transmission OK | with content: \n", datagram->ID);
 			dbg("radioDatagram", "\t Status: %i \n", datagram->status);
@@ -309,7 +295,7 @@ implementation{
 	task void alarmFalling(){
 
 		//log
-		dbg("radioDatagram", "[radio>>] !FALLING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", unicastConnectedAddress, coord_X, coord_Y);
+		dbg("radioDatagram", "[radio>>] !FALLING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", UnicastPairingAddress, coord_X, coord_Y);
 
 		//led blinking
 		call Leds.led0Toggle();
@@ -319,7 +305,7 @@ implementation{
 	task void alarmMissing(){
 
 		//log
-		dbg("radioDatagram", "[radio>>] !MISSING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", unicastConnectedAddress, coord_X, coord_Y);
+		dbg("radioDatagram", "[radio>>] !MISSING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", UnicastPairingAddress, coord_X, coord_Y);
 
 		//led blinking
 		call Leds.led0Toggle();
@@ -342,7 +328,7 @@ implementation{
 		if(&packet == msg && error == SUCCESS) {
 
 			//only if the ack listener is set to true
-			if(ackListener){
+			if(AckParent){
 
 				//acknowledgement received
 				if(call PacketAcknowledgements.wasAcked(msg)) {
@@ -351,7 +337,7 @@ implementation{
 					dbg("radioDatagram", "[radio>>] ack received at time %s \n", sim_time_string());
 
 					//deactivate ack listener
-					ackListener = FALSE;
+					AckParent = FALSE;
 
 				}else{
 
@@ -389,7 +375,7 @@ implementation{
 			
 			//checking the received key
 			for (i=0; i<K_LEN; i++){
-				if(pairing_dat->key[i] != KeyC[i]){
+				if(pairing_dat->key[i] != KeyChild[i]){
 					key_match = FALSE;
 				}
 			}
@@ -398,8 +384,8 @@ implementation{
 			if(key_match){
 
 				//saving pairing address
-				dbg("radioRX","[radio<<] TOS_Node: %u has KeyP: %ux%i | PAIRED | with TOS_Node: %u that has KeyC: %ux%i \n", TOS_NODE_ID, KeyP[0], K_LEN, pairing_dat->address, pairing_dat->key[0], K_LEN);
-				unicastConnectedAddress = pairing_dat->address;
+				dbg("radioRX","[radio<<] TOS_Node: %u has Key Parent: %ux%i | is paired | with TOS_Node: %u that has Key Child: %ux%i \n", TOS_NODE_ID, KeyParent[0], K_LEN, pairing_dat->address, pairing_dat->key[0], K_LEN);
+				UnicastPairingAddress = pairing_dat->address;
 
 				//calling unicast ack send
 				dbg("radioRX","[radio>>] Sending UNICAST pairing confirmation.. \n");
@@ -422,13 +408,13 @@ implementation{
 			if (pairing_ack_dat->acknowledgement == 1){
 
 				//set bracelet as paired
-				paired = TRUE;
+				isPaired = TRUE;
 
 				//led blinking
 				call Leds.led2Toggle();
 
 				//stopping broadcast transmission
-				dbg("radioRX", "[radio<<] Pairing ACK received | PAIRED | Stopping broadcast transmission.. \n");
+				dbg("radioRX", "[radio<<] Pairing ACK received | is paired | Stopping broadcast transmission.. \n");
 				call TimerPairing.stop();
 	
 				//starting operative timers
@@ -446,7 +432,7 @@ implementation{
 		}
 
 		//if the bracelet is paired
-		if(paired && isParent){
+		if(isPaired && isParent){
 
 			//checking the content of the datagram
 			if(info_dat->type == INFO){

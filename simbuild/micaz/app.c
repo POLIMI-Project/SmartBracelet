@@ -898,7 +898,7 @@ extern void *malloc(size_t __size) __attribute((__leaf__)) __attribute((__nothro
 #line 483
 extern void free(void *__ptr) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 741
-typedef int (*__compar_fn_t)(const void *arg_0xb7b69458, const void *arg_0xb7b695f0);
+typedef int (*__compar_fn_t)(const void *arg_0xb7bc1458, const void *arg_0xb7bc15f0);
 #line 779
 __extension__ 
 #line 796
@@ -917,7 +917,7 @@ extern double sqrt(double __x) __attribute((__leaf__)) __attribute((__nothrow__)
 #line 184
 extern double floor(double __x) __attribute((__leaf__)) __attribute((__nothrow__)) __attribute((const)) ;
 #line 260
-extern double erfc(double arg_0xb7b1a8c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
+extern double erfc(double arg_0xb7b728c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 336
 __extension__ 
 
@@ -1312,8 +1312,8 @@ typedef struct hashtable hashtable_t;
 #line 78
 struct hashtable *
 create_hashtable(unsigned int minsize, 
-unsigned int (*hashfunction)(void *arg_0xb79c4840), 
-int (*key_eq_fn)(void *arg_0xb79c4c88, void *arg_0xb79c4e00));
+unsigned int (*hashfunction)(void *arg_0xb7a1c840), 
+int (*key_eq_fn)(void *arg_0xb7a1cc88, void *arg_0xb7a1ce00));
 #line 103
 #line 102
 int 
@@ -1926,7 +1926,7 @@ struct tm;
 
 struct tm;
 # 46 "/opt/tinyos-main-2.1.2/tos/lib/tossim/randomlib.h"
-static inline void RandomInitialise(int arg_0xb78939b8, int arg_0xb7893b10);
+static inline void RandomInitialise(int arg_0xb78eb9b8, int arg_0xb78ebb10);
 static double RandomUniform(void );
 # 51 "/opt/tinyos-main-2.1.2/tos/lib/tossim/sim_noise.c"
 int numCase1 = 0;
@@ -3813,11 +3813,11 @@ static error_t MeasureClockC$Init$init(void );
 # 67 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
 static error_t SimSchedulerBasicP$TaskBasic$postTask(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0xb77ef650);
+uint8_t arg_0xb7847650);
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$default$runTask(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0xb77ef650);
+uint8_t arg_0xb7847650);
 # 57 "/opt/tinyos-main-2.1.2/tos/interfaces/Scheduler.nc"
 static void SimSchedulerBasicP$Scheduler$init(void );
 
@@ -3847,7 +3847,7 @@ static long long int SimMoteP$SimMote$getStartTime(void );
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static error_t TossimActiveMessageC$AMSend$send(
 # 47 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7635108, 
+am_id_t arg_0xb768d108, 
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -3870,7 +3870,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$default$receive(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7633178, 
+am_id_t arg_0xb768b178, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3917,7 +3917,7 @@ message_t *
 
 TossimActiveMessageC$Receive$default$receive(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7635ac8, 
+am_id_t arg_0xb768dac8, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4095,7 +4095,7 @@ error_t error);
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(
 # 48 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0xb74980a0, 
+am_id_t arg_0xb74f1730, 
 # 103 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4108,7 +4108,7 @@ error_t error);
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$send(
 # 46 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0xb74996a8, 
+uint8_t arg_0xb74f4ca8, 
 # 67 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4122,7 +4122,7 @@ uint8_t len);
 #line 100
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(
 # 46 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0xb74996a8, 
+uint8_t arg_0xb74f4ca8, 
 # 96 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4205,17 +4205,17 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fire
 #line 83
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb730cc70);
+uint8_t arg_0xb73643a8);
 # 64 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startPeriodic(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb730cc70, 
+uint8_t arg_0xb73643a8, 
 # 64 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.nc"
 uint32_t dt);
 #line 78
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$stop(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb730cc70);
+uint8_t arg_0xb73643a8);
 # 82 "/opt/tinyos-main-2.1.2/tos/lib/timer/Counter.nc"
 static void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$overflow(void );
 # 62 "/opt/tinyos-main-2.1.2/tos/interfaces/Init.nc"
@@ -4313,7 +4313,7 @@ int sim_main_start_mote(void )   ;
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$runTask(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0xb77ef650);
+uint8_t arg_0xb7847650);
 
 
 
@@ -4481,7 +4481,7 @@ static am_addr_t TossimActiveMessageC$amAddress(void );
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static void TossimActiveMessageC$AMSend$sendDone(
 # 47 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7635108, 
+am_id_t arg_0xb768d108, 
 # 103 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4500,7 +4500,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$receive(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7633178, 
+am_id_t arg_0xb768b178, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4519,7 +4519,7 @@ message_t *
 
 TossimActiveMessageC$Receive$receive(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7635ac8, 
+am_id_t arg_0xb768dac8, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4995,16 +4995,16 @@ enum smartBraceletC$__nesc_unnamed4338 {
 #line 68
 typedef int smartBraceletC$__nesc_sillytask_alarmMissing[smartBraceletC$alarmMissing];
 #line 39
-uint8_t smartBraceletC$KeyP[1000][20];
-uint8_t smartBraceletC$KeyC[1000][20];
+uint8_t smartBraceletC$KeyParent[1000][20];
+uint8_t smartBraceletC$KeyChild[1000][20];
 
 
-uint16_t smartBraceletC$unicastConnectedAddress[1000];
+uint16_t smartBraceletC$UnicastPairingAddress[1000];
 
 
-bool smartBraceletC$paired[1000];
+bool smartBraceletC$isPaired[1000];
 bool smartBraceletC$isParent[1000];
-bool smartBraceletC$ackListener[1000];
+bool smartBraceletC$AckParent[1000];
 
 
 message_t smartBraceletC$packet[1000];
@@ -5037,12 +5037,12 @@ static inline void smartBraceletC$TimerTransmitting$fired(void );
 
 static inline void smartBraceletC$TimerAlert$fired(void );
 #line 158
-static inline void smartBraceletC$transmitUnicastDatagram$runTask(void );
-#line 193
 static inline void smartBraceletC$transmitBroadcastDatagram$runTask(void );
-#line 239
+#line 198
+static inline void smartBraceletC$transmitUnicastDatagram$runTask(void );
+#line 229
 static inline void smartBraceletC$transmitChildDatagram$runTask(void );
-#line 309
+#line 295
 static inline void smartBraceletC$alarmFalling$runTask(void );
 
 
@@ -5054,14 +5054,14 @@ static inline void smartBraceletC$alarmFalling$runTask(void );
 
 
 static inline void smartBraceletC$alarmMissing$runTask(void );
-#line 334
+#line 320
 static inline void smartBraceletC$SplitControl$stopDone(error_t error);
 
 
 
 
 static void smartBraceletC$AMSend$sendDone(message_t *msg, error_t error);
-#line 369
+#line 355
 static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *payload, uint8_t len);
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static void /*smartBraceletAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQueueEntryP$0$AMSend$sendDone(
@@ -5119,7 +5119,7 @@ static inline void /*smartBraceletAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQueueE
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(
 # 48 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0xb74980a0, 
+am_id_t arg_0xb74f1730, 
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -5136,7 +5136,7 @@ uint8_t len);
 # 100 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(
 # 46 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0xb74996a8, 
+uint8_t arg_0xb74f4ca8, 
 # 96 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -5545,7 +5545,7 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb730cc70);
+uint8_t arg_0xb73643a8);
 #line 71
 enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4344 {
 #line 71
@@ -6193,9 +6193,9 @@ inline static error_t smartBraceletC$transmitUnicastDatagram$postTask(void ){
 #line 67
 }
 #line 67
-# 369 "smartBraceletC.nc"
+# 355 "smartBraceletC.nc"
 static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *payload, uint8_t len)
-#line 369
+#line 355
 {
 
 
@@ -6219,7 +6219,7 @@ static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *pa
 
 
       for (i = 0; i < 20; i++) {
-          if (__nesc_ntoh_uint8(pairing_dat->key[i].nxdata) != smartBraceletC$KeyC[sim_node()][i]) {
+          if (__nesc_ntoh_uint8(pairing_dat->key[i].nxdata) != smartBraceletC$KeyChild[sim_node()][i]) {
               key_match = FALSE;
             }
         }
@@ -6228,8 +6228,8 @@ static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *pa
       if (key_match) {
 
 
-          sim_log_debug(178U, "radioRX", "[radio<<] TOS_Node: %u has KeyP: %ux%i | PAIRED | with TOS_Node: %u that has KeyC: %ux%i \n", TOS_NODE_ID, smartBraceletC$KeyP[sim_node()][0], 20, __nesc_ntoh_uint16(pairing_dat->address.nxdata), __nesc_ntoh_uint8(pairing_dat->key[0].nxdata), 20);
-          smartBraceletC$unicastConnectedAddress[sim_node()] = __nesc_ntoh_uint16(pairing_dat->address.nxdata);
+          sim_log_debug(178U, "radioRX", "[radio<<] TOS_Node: %u has Key Parent: %ux%i | is paired | with TOS_Node: %u that has Key Child: %ux%i \n", TOS_NODE_ID, smartBraceletC$KeyParent[sim_node()][0], 20, __nesc_ntoh_uint16(pairing_dat->address.nxdata), __nesc_ntoh_uint8(pairing_dat->key[0].nxdata), 20);
+          smartBraceletC$UnicastPairingAddress[sim_node()] = __nesc_ntoh_uint16(pairing_dat->address.nxdata);
 
 
           sim_log_debug(179U, "radioRX", "[radio>>] Sending UNICAST pairing confirmation.. \n");
@@ -6252,13 +6252,13 @@ static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *pa
       if (__nesc_ntoh_uint8(pairing_ack_dat->acknowledgement.nxdata) == 1) {
 
 
-          smartBraceletC$paired[sim_node()] = TRUE;
+          smartBraceletC$isPaired[sim_node()] = TRUE;
 
 
           smartBraceletC$Leds$led2Toggle();
 
 
-          sim_log_debug(182U, "radioRX", "[radio<<] Pairing ACK received | PAIRED | Stopping broadcast transmission.. \n");
+          sim_log_debug(182U, "radioRX", "[radio<<] Pairing ACK received | is paired | Stopping broadcast transmission.. \n");
           smartBraceletC$TimerPairing$stop();
 
 
@@ -6276,7 +6276,7 @@ static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *pa
     }
 
 
-  if (smartBraceletC$paired[sim_node()] && smartBraceletC$isParent[sim_node()]) {
+  if (smartBraceletC$isPaired[sim_node()] && smartBraceletC$isParent[sim_node()]) {
 
 
       if (__nesc_ntoh_uint8(info_dat->type.nxdata) == 2) {
@@ -6315,13 +6315,13 @@ static inline message_t *TossimActiveMessageC$Receive$default$receive(am_id_t id
 }
 
 # 78 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0xb7635ac8, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0xb768dac8, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-  switch (arg_0xb7635ac8) {
+  switch (arg_0xb768dac8) {
 #line 78
     case 4:
 #line 78
@@ -6331,7 +6331,7 @@ inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0xb76
 #line 78
     default:
 #line 78
-      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0xb7635ac8, msg, payload, len);
+      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0xb768dac8, msg, payload, len);
 #line 78
       break;
 #line 78
@@ -6501,13 +6501,13 @@ static inline message_t *TossimActiveMessageC$Snoop$default$receive(am_id_t id, 
 }
 
 # 78 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0xb7633178, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0xb768b178, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0xb7633178, msg, payload, len);
+    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0xb768b178, msg, payload, len);
 #line 78
 
 #line 78
@@ -6673,9 +6673,9 @@ static inline void TossimPacketModelC$startDoneTask$runTask(void )
   TossimPacketModelC$Control$startDone(SUCCESS);
 }
 
-# 334 "smartBraceletC.nc"
+# 320 "smartBraceletC.nc"
 static inline void smartBraceletC$SplitControl$stopDone(error_t error)
-#line 334
+#line 320
 {
   ;
 }
@@ -6729,9 +6729,9 @@ static __inline  int8_t __nesc_hton_int8(void * target, int8_t value)
 }
 
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
-inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0xb7635108, message_t * msg, error_t error){
+inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0xb768d108, message_t * msg, error_t error){
 #line 110
-  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0xb7635108, msg, error);
+  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0xb768d108, msg, error);
 #line 110
 }
 #line 110
@@ -6813,15 +6813,15 @@ inline static void * smartBraceletC$Packet$getPayload(message_t * msg, uint8_t l
 #line 126
 }
 #line 126
-# 193 "smartBraceletC.nc"
+# 158 "smartBraceletC.nc"
 static inline void smartBraceletC$transmitBroadcastDatagram$runTask(void )
-#line 193
+#line 158
 {
 
 
   int i;
 
-  if (!smartBraceletC$paired[sim_node()]) {
+  if (!smartBraceletC$isPaired[sim_node()]) {
 
 
       pairing_datagram_t *datagram = (pairing_datagram_t *)smartBraceletC$Packet$getPayload(&smartBraceletC$packet[sim_node()], sizeof(pairing_datagram_t ));
@@ -6835,27 +6835,22 @@ static inline void smartBraceletC$transmitBroadcastDatagram$runTask(void )
 
 
       for (i = 0; i < 20; i++) {
-          __nesc_hton_uint8(datagram->key[i].nxdata, smartBraceletC$KeyP[sim_node()][i]);
+          __nesc_hton_uint8(datagram->key[i].nxdata, smartBraceletC$KeyParent[sim_node()][i]);
         }
 
 
       __nesc_hton_uint16(datagram->address.nxdata, TOS_NODE_ID);
 
 
-      sim_log_debug(162U, "radioDatagram", "[radio>>] Broadcast datagram Id: %u is under transmission | Time: %s \n", __nesc_ntoh_uint8(datagram->ID.nxdata), sim_time_string());
+      sim_log_debug(158U, "radioDatagram", "[radio>>] Broadcast datagram Id: %u is under transmission | Time: %s \n", __nesc_ntoh_uint8(datagram->ID.nxdata), sim_time_string());
 
 
       if (smartBraceletC$AMSend$send(AM_BROADCAST_ADDR, &smartBraceletC$packet[sim_node()], sizeof(pairing_datagram_t )) == SUCCESS) {
 
-          sim_log_debug(163U, "radioDatagram", "[radio>>] Broadcast datagram Id: %u | Transmission OK | with content: \n", __nesc_ntoh_uint8(datagram->ID.nxdata));
-          sim_log_debug(164U, "radioDatagram", "\t Key: %ux%i \n", __nesc_ntoh_uint8(datagram->key[0].nxdata), 20);
-          sim_log_debug(165U, "radioDatagram", "\t Address: %u \n", __nesc_ntoh_uint16(datagram->address.nxdata));
-          sim_log_debug(166U, "radioDatagram", "\t Type: %u \n", __nesc_ntoh_uint8(datagram->type.nxdata));
-        }
-      else {
-
-
-          ;
+          sim_log_debug(159U, "radioDatagram", "[radio>>] Broadcast datagram Id: %u | Transmission is OK | with content: \n", __nesc_ntoh_uint8(datagram->ID.nxdata));
+          sim_log_debug(160U, "radioDatagram", "\t Key: %ux%i \n", __nesc_ntoh_uint8(datagram->key[0].nxdata), 20);
+          sim_log_debug(161U, "radioDatagram", "\t Address: %u \n", __nesc_ntoh_uint16(datagram->address.nxdata));
+          sim_log_debug(162U, "radioDatagram", "\t Type: %u \n", __nesc_ntoh_uint8(datagram->type.nxdata));
         }
     }
 }
@@ -6886,9 +6881,9 @@ inline static error_t smartBraceletC$PacketAcknowledgements$requestAck(message_t
 #line 59
 }
 #line 59
-# 158 "smartBraceletC.nc"
+# 198 "smartBraceletC.nc"
 static inline void smartBraceletC$transmitUnicastDatagram$runTask(void )
-#line 158
+#line 198
 {
 
 
@@ -6901,25 +6896,20 @@ static inline void smartBraceletC$transmitUnicastDatagram$runTask(void )
   __nesc_hton_uint8(datagram->acknowledgement.nxdata, 1);
 
 
-  sim_log_debug(158U, "radioDatagram", "[radio>>] Unicast datagram (pairing ack) to Address: %u is under transmission | Time: %s \n", smartBraceletC$unicastConnectedAddress[sim_node()], sim_time_string());
+  sim_log_debug(163U, "radioDatagram", "[radio>>] Unicast datagram (pairing acknowledgement) to Address: %u is under transmission | Time: %s \n", smartBraceletC$UnicastPairingAddress[sim_node()], sim_time_string());
 
 
-  smartBraceletC$ackListener[sim_node()] = TRUE;
+  smartBraceletC$AckParent[sim_node()] = TRUE;
 
 
   smartBraceletC$PacketAcknowledgements$requestAck(&smartBraceletC$packet[sim_node()]);
 
 
-  if (smartBraceletC$AMSend$send(smartBraceletC$unicastConnectedAddress[sim_node()], &smartBraceletC$packet[sim_node()], sizeof(pairing_datagram_ack_t )) == SUCCESS) {
+  if (smartBraceletC$AMSend$send(smartBraceletC$UnicastPairingAddress[sim_node()], &smartBraceletC$packet[sim_node()], sizeof(pairing_datagram_ack_t )) == SUCCESS) {
 
-      sim_log_debug(159U, "radioDatagram", "[radio>>] Unicast datagram (pairing ack) to Address: %u | Transmission OK | with content: \n", smartBraceletC$unicastConnectedAddress[sim_node()]);
-      sim_log_debug(160U, "radioDatagram", "\t Acknowledgement: %u \n", __nesc_ntoh_uint8(datagram->acknowledgement.nxdata));
-      sim_log_debug(161U, "radioDatagram", "\t Type: %u \n", __nesc_ntoh_uint8(datagram->type.nxdata));
-    }
-  else {
-
-
-      ;
+      sim_log_debug(164U, "radioDatagram", "[radio>>] Unicast datagram (pairing acknowledgement) to Address: %u | Transmission is OK | with content: \n", smartBraceletC$UnicastPairingAddress[sim_node()]);
+      sim_log_debug(165U, "radioDatagram", "\t Acknowledgement: %u \n", __nesc_ntoh_uint8(datagram->acknowledgement.nxdata));
+      sim_log_debug(166U, "radioDatagram", "\t Type: %u \n", __nesc_ntoh_uint8(datagram->type.nxdata));
     }
 }
 
@@ -6945,9 +6935,9 @@ inline static uint16_t smartBraceletC$Random$rand16(void ){
 #line 52
 }
 #line 52
-# 239 "smartBraceletC.nc"
+# 229 "smartBraceletC.nc"
 static inline void smartBraceletC$transmitChildDatagram$runTask(void )
-#line 239
+#line 229
 {
 
 
@@ -6960,39 +6950,35 @@ static inline void smartBraceletC$transmitChildDatagram$runTask(void )
   uint16_t rnd = smartBraceletC$Random$rand16() % 10 + 1;
 
 
-
   if (rnd >= 1 && rnd <= 3) {
 
 
       sendStatus = 3;
     }
   else {
-#line 257
+#line 246
     if (rnd >= 4 && rnd <= 6) {
 
 
         sendStatus = 4;
       }
     else {
-#line 262
+#line 251
       if (rnd >= 7 && rnd <= 9) {
 
 
           sendStatus = 5;
         }
       else {
-#line 267
+#line 256
         if (rnd == 10) {
 
 
             sendStatus = 6;
           }
-        else {
-          }
         }
       }
     }
-
   sim_log_debug(167U, "radioDatagram", "[radio>>] Random: %u | RndStatus %i\n", rnd, sendStatus);
 
 
@@ -7006,7 +6992,7 @@ static inline void smartBraceletC$transmitChildDatagram$runTask(void )
   sim_log_debug(168U, "radioDatagram", "[radio>>] Child Unicast datagram Id: %u is under transmission | Time: %s \n", __nesc_ntoh_uint16(datagram->ID.nxdata), sim_time_string());
 
 
-  if (smartBraceletC$AMSend$send(smartBraceletC$unicastConnectedAddress[sim_node()], &smartBraceletC$packet[sim_node()], sizeof(info_datagram_t )) == SUCCESS) {
+  if (smartBraceletC$AMSend$send(smartBraceletC$UnicastPairingAddress[sim_node()], &smartBraceletC$packet[sim_node()], sizeof(info_datagram_t )) == SUCCESS) {
 
       sim_log_debug(169U, "radioDatagram", "[radio>>] Child Unicast datagram Id: %u | Transmission OK | with content: \n", __nesc_ntoh_uint16(datagram->ID.nxdata));
       sim_log_debug(170U, "radioDatagram", "\t Status: %i \n", __nesc_ntoh_uint8(datagram->status.nxdata));
@@ -7030,13 +7016,13 @@ inline static void smartBraceletC$Leds$led0Toggle(void ){
 #line 67
 }
 #line 67
-# 309 "smartBraceletC.nc"
+# 295 "smartBraceletC.nc"
 static inline void smartBraceletC$alarmFalling$runTask(void )
-#line 309
+#line 295
 {
 
 
-  sim_log_debug(173U, "radioDatagram", "[radio>>] !FALLING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", smartBraceletC$unicastConnectedAddress[sim_node()], smartBraceletC$coord_X[sim_node()], smartBraceletC$coord_Y[sim_node()]);
+  sim_log_debug(173U, "radioDatagram", "[radio>>] !FALLING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", smartBraceletC$UnicastPairingAddress[sim_node()], smartBraceletC$coord_X[sim_node()], smartBraceletC$coord_Y[sim_node()]);
 
 
   smartBraceletC$Leds$led0Toggle();
@@ -7044,11 +7030,11 @@ static inline void smartBraceletC$alarmFalling$runTask(void )
 
 
 static inline void smartBraceletC$alarmMissing$runTask(void )
-#line 319
+#line 305
 {
 
 
-  sim_log_debug(174U, "radioDatagram", "[radio>>] !MISSING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", smartBraceletC$unicastConnectedAddress[sim_node()], smartBraceletC$coord_X[sim_node()], smartBraceletC$coord_Y[sim_node()]);
+  sim_log_debug(174U, "radioDatagram", "[radio>>] !MISSING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", smartBraceletC$UnicastPairingAddress[sim_node()], smartBraceletC$coord_X[sim_node()], smartBraceletC$coord_Y[sim_node()]);
 
 
   smartBraceletC$Leds$led0Toggle();
@@ -7084,9 +7070,9 @@ static inline void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone
 }
 
 # 100 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
-inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0xb74996a8, message_t * msg, error_t error){
+inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0xb74f4ca8, message_t * msg, error_t error){
 #line 100
-  switch (arg_0xb74996a8) {
+  switch (arg_0xb74f4ca8) {
 #line 100
     case 0U:
 #line 100
@@ -7096,7 +7082,7 @@ inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t
 #line 100
     default:
 #line 100
-      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0xb74996a8, msg, error);
+      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0xb74f4ca8, msg, error);
 #line 100
       break;
 #line 100
@@ -7312,9 +7298,9 @@ static inline void SimSchedulerBasicP$TaskBasic$default$runTask(uint8_t id)
 }
 
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
-inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0xb77ef650){
+inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0xb7847650){
 #line 75
-  switch (arg_0xb77ef650) {
+  switch (arg_0xb7847650) {
 #line 75
     case TossimPacketModelC$startDoneTask:
 #line 75
@@ -7390,7 +7376,7 @@ inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0xb77ef650){
 #line 75
     default:
 #line 75
-      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0xb77ef650);
+      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0xb7847650);
 #line 75
       break;
 #line 75
@@ -7547,9 +7533,9 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$d
 }
 
 # 83 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0xb730cc70){
+inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0xb73643a8){
 #line 83
-  switch (arg_0xb730cc70) {
+  switch (arg_0xb73643a8) {
 #line 83
     case 0U:
 #line 83
@@ -7571,7 +7557,7 @@ inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$f
 #line 83
     default:
 #line 83
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0xb730cc70);
+      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0xb73643a8);
 #line 83
       break;
 #line 83
@@ -7982,13 +7968,13 @@ inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$errorTask$postTask
 }
 #line 67
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
-inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0xb74980a0, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0xb74f1730, am_addr_t addr, message_t * msg, uint8_t len){
 #line 80
   unsigned char __nesc_result;
 #line 80
 
 #line 80
-  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0xb74980a0, addr, msg, len);
+  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0xb74f1730, addr, msg, len);
 #line 80
 
 #line 80
@@ -9292,10 +9278,10 @@ static inline void smartBraceletC$Boot$booted(void )
 
 
               for (i = 0; i < 20; i++) {
-                  smartBraceletC$KeyP[sim_node()][i] = n;
-                  smartBraceletC$KeyC[sim_node()][i] = n + 1;
+                  smartBraceletC$KeyParent[sim_node()][i] = n;
+                  smartBraceletC$KeyChild[sim_node()][i] = n + 1;
                 }
-              sim_log_debug(149U, "node", "[info] Node: %i | KeyP: %ux%i | KeyC: %ux%i\n", n, smartBraceletC$KeyP[sim_node()][0], 20, smartBraceletC$KeyC[sim_node()][0], 20);
+              sim_log_debug(149U, "node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, smartBraceletC$KeyParent[sim_node()][0], 20, smartBraceletC$KeyChild[sim_node()][0], 20);
             }
           else 
 #line 88
@@ -9303,10 +9289,10 @@ static inline void smartBraceletC$Boot$booted(void )
 
 
               for (i = 0; i < 20; i++) {
-                  smartBraceletC$KeyC[sim_node()][i] = n - 1;
-                  smartBraceletC$KeyP[sim_node()][i] = n + 1 - 1;
+                  smartBraceletC$KeyParent[sim_node()][i] = n + 1 - 1;
+                  smartBraceletC$KeyChild[sim_node()][i] = n - 1;
                 }
-              sim_log_debug(150U, "node", "[info] Node: %i | KeyP: %ux%i | KeyC: %ux%i\n", n, smartBraceletC$KeyP[sim_node()][0], 20, smartBraceletC$KeyC[sim_node()][0], 20);
+              sim_log_debug(150U, "node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, smartBraceletC$KeyParent[sim_node()][0], 20, smartBraceletC$KeyChild[sim_node()][0], 20);
             }
         }
     }
@@ -11459,16 +11445,16 @@ static void HplAtm128Timer0AsyncP$configure_compare(sim_event_t *evt)
   evt->time = compareTime;
 }
 
-# 339 "smartBraceletC.nc"
+# 325 "smartBraceletC.nc"
 static void smartBraceletC$AMSend$sendDone(message_t *msg, error_t error)
-#line 339
+#line 325
 {
 
 
   if (&smartBraceletC$packet[sim_node()] == msg && error == SUCCESS) {
 
 
-      if (smartBraceletC$ackListener[sim_node()]) {
+      if (smartBraceletC$AckParent[sim_node()]) {
 
 
           if (smartBraceletC$PacketAcknowledgements$wasAcked(msg)) {
@@ -11477,7 +11463,7 @@ static void smartBraceletC$AMSend$sendDone(message_t *msg, error_t error)
               sim_log_debug(175U, "radioDatagram", "[radio>>] ack received at time %s \n", sim_time_string());
 
 
-              smartBraceletC$ackListener[sim_node()] = FALSE;
+              smartBraceletC$AckParent[sim_node()] = FALSE;
             }
           else {
 
@@ -12172,28 +12158,28 @@ static int __nesc_nido_resolve(int __nesc_mote,
   }
 
   /* Module smartBraceletC */
-  if (!strcmp(varname, "smartBraceletC$KeyP"))
+  if (!strcmp(varname, "smartBraceletC$KeyParent"))
   {
-    *addr = (uintptr_t)&smartBraceletC$KeyP[__nesc_mote];
-    *size = sizeof(smartBraceletC$KeyP[__nesc_mote]);
+    *addr = (uintptr_t)&smartBraceletC$KeyParent[__nesc_mote];
+    *size = sizeof(smartBraceletC$KeyParent[__nesc_mote]);
     return 0;
   }
-  if (!strcmp(varname, "smartBraceletC$KeyC"))
+  if (!strcmp(varname, "smartBraceletC$KeyChild"))
   {
-    *addr = (uintptr_t)&smartBraceletC$KeyC[__nesc_mote];
-    *size = sizeof(smartBraceletC$KeyC[__nesc_mote]);
+    *addr = (uintptr_t)&smartBraceletC$KeyChild[__nesc_mote];
+    *size = sizeof(smartBraceletC$KeyChild[__nesc_mote]);
     return 0;
   }
-  if (!strcmp(varname, "smartBraceletC$unicastConnectedAddress"))
+  if (!strcmp(varname, "smartBraceletC$UnicastPairingAddress"))
   {
-    *addr = (uintptr_t)&smartBraceletC$unicastConnectedAddress[__nesc_mote];
-    *size = sizeof(smartBraceletC$unicastConnectedAddress[__nesc_mote]);
+    *addr = (uintptr_t)&smartBraceletC$UnicastPairingAddress[__nesc_mote];
+    *size = sizeof(smartBraceletC$UnicastPairingAddress[__nesc_mote]);
     return 0;
   }
-  if (!strcmp(varname, "smartBraceletC$paired"))
+  if (!strcmp(varname, "smartBraceletC$isPaired"))
   {
-    *addr = (uintptr_t)&smartBraceletC$paired[__nesc_mote];
-    *size = sizeof(smartBraceletC$paired[__nesc_mote]);
+    *addr = (uintptr_t)&smartBraceletC$isPaired[__nesc_mote];
+    *size = sizeof(smartBraceletC$isPaired[__nesc_mote]);
     return 0;
   }
   if (!strcmp(varname, "smartBraceletC$isParent"))
@@ -12202,10 +12188,10 @@ static int __nesc_nido_resolve(int __nesc_mote,
     *size = sizeof(smartBraceletC$isParent[__nesc_mote]);
     return 0;
   }
-  if (!strcmp(varname, "smartBraceletC$ackListener"))
+  if (!strcmp(varname, "smartBraceletC$AckParent"))
   {
-    *addr = (uintptr_t)&smartBraceletC$ackListener[__nesc_mote];
-    *size = sizeof(smartBraceletC$ackListener[__nesc_mote]);
+    *addr = (uintptr_t)&smartBraceletC$AckParent[__nesc_mote];
+    *size = sizeof(smartBraceletC$AckParent[__nesc_mote]);
     return 0;
   }
   if (!strcmp(varname, "smartBraceletC$packet"))
@@ -12532,12 +12518,12 @@ static void __nesc_nido_initialise(int __nesc_mote)
   memset((void *)&ActiveMessageAddressC$addr[__nesc_mote], 0, sizeof ActiveMessageAddressC$addr[__nesc_mote]);
 
   /* Module smartBraceletC */
-  memset((void *)&smartBraceletC$KeyP[__nesc_mote], 0, sizeof smartBraceletC$KeyP[__nesc_mote]);
-  memset((void *)&smartBraceletC$KeyC[__nesc_mote], 0, sizeof smartBraceletC$KeyC[__nesc_mote]);
-  memset((void *)&smartBraceletC$unicastConnectedAddress[__nesc_mote], 0, sizeof smartBraceletC$unicastConnectedAddress[__nesc_mote]);
-  smartBraceletC$paired[__nesc_mote] = FALSE;
+  memset((void *)&smartBraceletC$KeyParent[__nesc_mote], 0, sizeof smartBraceletC$KeyParent[__nesc_mote]);
+  memset((void *)&smartBraceletC$KeyChild[__nesc_mote], 0, sizeof smartBraceletC$KeyChild[__nesc_mote]);
+  memset((void *)&smartBraceletC$UnicastPairingAddress[__nesc_mote], 0, sizeof smartBraceletC$UnicastPairingAddress[__nesc_mote]);
+  smartBraceletC$isPaired[__nesc_mote] = FALSE;
   smartBraceletC$isParent[__nesc_mote] = FALSE;
-  smartBraceletC$ackListener[__nesc_mote] = FALSE;
+  smartBraceletC$AckParent[__nesc_mote] = FALSE;
   memset((void *)&smartBraceletC$packet[__nesc_mote], 0, sizeof smartBraceletC$packet[__nesc_mote]);
   memset((void *)&smartBraceletC$coord_X[__nesc_mote], 0, sizeof smartBraceletC$coord_X[__nesc_mote]);
   memset((void *)&smartBraceletC$coord_Y[__nesc_mote], 0, sizeof smartBraceletC$coord_Y[__nesc_mote]);
