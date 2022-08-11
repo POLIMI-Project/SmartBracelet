@@ -1,13 +1,13 @@
 <tos_image>
   <ident>
-    <userhash>2C00343AL</userhash>
-    <platform>telosb</platform>
-    <timestamp>62F4CCDDL</timestamp>
-    <username>user</username>
-    <appname>smartBraceletAp</appname>
-    <uidhash>A8AB3F77L</uidhash>
     <hostname>user-iot</hostname>
+    <timestamp>62F5063EL</timestamp>
+    <appname>smartBraceletAp</appname>
+    <uidhash>C60D7D45L</uidhash>
+    <username>user</username>
+    <platform>telosb</platform>
     <deluge_support>no</deluge_support>
+    <userhash>2C00343AL</userhash>
   </ident>
   <image format="ihex">
 :104000005542200135D0085A8245B212314000395C

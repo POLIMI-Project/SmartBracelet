@@ -261,11 +261,11 @@ implementation{
 		}
 
 		//log
-		dbg("radioDatagram", "[radio>>] Random: %u | RndStatus %i\n", rnd, sendStatus);
+		dbg("radioDatagram", "[radio>>] Random: %u | Random Status %i\n", rnd, sendStatus);
 
 		//parameters assignment
 		datagram->type = INFO;
-		datagram->posX = call Random.rand16();
+		datagram->posX = call Random.rand16(); // We need it if we don't use Cooja in the simulation
 		datagram->posY = call Random.rand16();
 		datagram->status = sendStatus;
 		datagram->ID = infoDatagramID;
@@ -280,13 +280,7 @@ implementation{
 			dbg("radioDatagram", "\t Status: %i \n", datagram->status);
 			dbg("radioDatagram", "\t PosX: %u \n", datagram->posX);
 			dbg("radioDatagram", "\t PosY: %u \n", datagram->posY);
-			//dbg("radioDatagram", "\n");
-		}else{
-			//transmission error
-			//do nothing (retry next triggering event)
-			;
 		}
-
 		//increasing id counter for next transmission 
 		infoDatagramID++;
 	}

@@ -22,9 +22,10 @@ implementation {
 	components LedsC;
 
 	//Prints - used for Node-Red
-	components SerialStartC;
-	components SerialPrintfC;
-	components SerialActiveMessageC as AM;
+	//components SerialStartC;
+	//components SerialPrintfC;
+	//components SerialActiveMessageC as AM; 
+	//CFLAGS += -I$(TOSDIR)/lib/printf in make file (doesn't work)
 	
 	/////////////////////////////////////////////////////////
 	//Interfaces
