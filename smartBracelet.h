@@ -13,7 +13,7 @@
 
 
 //timers values
-#define T_1 15000
+#define T_1 12500 // Random, we didn't know how much was it
 #define T_2 10000
 #define T_3 60000
 
@@ -41,7 +41,7 @@ typedef nx_struct info_datagram{
 	nx_uint16_t posX;
 	nx_uint16_t posY;
 	nx_uint8_t status;
-	nx_uint16_t identifier;
+	nx_uint16_t ID;
 } info_datagram_t;
 
 //pairing datagram (broadcast)
@@ -49,7 +49,7 @@ typedef nx_struct pairing_datagram{
 	nx_uint8_t type;
 	nx_uint8_t key[K_LEN];
 	nx_uint16_t address;
-	nx_uint8_t identifier;
+	nx_uint8_t ID;
 }pairing_datagram_t;
 
 //pairing acknowledgement datagram (unicast)

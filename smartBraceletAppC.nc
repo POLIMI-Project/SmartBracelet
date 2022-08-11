@@ -4,8 +4,7 @@ configuration smartBraceletAppC {}
 
 implementation {
 
-	////////////////////////////////////////////////////////
-	//Components
+	////////////////Components/////////////////////////
 
 	//Main
 	components MainC, smartBraceletC as App;
@@ -22,7 +21,7 @@ implementation {
 	//Various
 	components LedsC;
 
-	//Prints
+	//Prints - used for Node-Red
 	//components SerialStartC;
 	//components SerialPrintfC;
 	//components SerialActiveMessageC as AM;
@@ -49,7 +48,6 @@ implementation {
 
 	//Random
 	App.Random -> RandomC;
-	RandomC <- MainC.SoftwareInit;
 
 	//Leds
 	App.Leds-> LedsC;

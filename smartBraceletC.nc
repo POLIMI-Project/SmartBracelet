@@ -22,10 +22,10 @@ module smartBraceletC{
 		//timer pairing:
 		interface Timer<TMilli> as TimerPairing;
 
-		//timer transmitting: child transmission trigger
+		//timer transmitting: child transmission trigger: 10 seconds
 		interface Timer<TMilli> as TimerTransmitting;
 
-		//timer3: alarm after 60 sec
+		//timer3: alarm after 60 seconds
 		interface Timer<TMilli> as TimerAlert;
 	}
 }
@@ -201,7 +201,7 @@ implementation{
 			pairing_datagram_t* datagram = (pairing_datagram_t*)(call Packet.getPayload(&packet, sizeof(pairing_datagram_t)));
 			
 			//passing datagram id
-			datagram->identifier = broadcastDatagramID;
+			datagram->ID = broadcastDatagramID;
 			broadcastDatagramID++;
 
 			//passing datagram type
@@ -216,12 +216,12 @@ implementation{
 			datagram->address = TOS_NODE_ID;
 
 			//log
-			dbg("radioDatagram", "[radio>>] Broadcast datagram Id: %u is under transmission | Time: %s \n", datagram->identifier,  sim_time_string());
+			dbg("radioDatagram", "[radio>>] Broadcast datagram Id: %u is under transmission | Time: %s \n", datagram->ID,  sim_time_string());
 		
 			//transmission result
 			if(call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(pairing_datagram_t)) == SUCCESS){
 				//transmission success
-				dbg("radioDatagram", "[radio>>] Broadcast datagram Id: %u | Transmission OK | with content: \n", datagram->identifier);
+				dbg("radioDatagram", "[radio>>] Broadcast datagram Id: %u | Transmission OK | with content: \n", datagram->ID);
 				dbg("radioDatagram", "\t Key: %ux%i \n", datagram->key[0], K_LEN);
 				dbg("radioDatagram", "\t Address: %u \n", datagram->address);
 				dbg("radioDatagram", "\t Type: %u \n", datagram->type);
@@ -282,15 +282,15 @@ implementation{
 		datagram->posX = call Random.rand16();
 		datagram->posY = call Random.rand16();
 		datagram->status = sendStatus;
-		datagram->identifier = infoDatagramID;
+		datagram->ID = infoDatagramID;
 
 		//log
-		dbg("radioDatagram", "[radio>>] Child Unicast datagram Id: %u is under transmission | Time: %s \n", datagram->identifier,  sim_time_string());
+		dbg("radioDatagram", "[radio>>] Child Unicast datagram Id: %u is under transmission | Time: %s \n", datagram->ID,  sim_time_string());
 
 		//transmission result
 		if(call AMSend.send(unicastConnectedAddress, &packet, sizeof(info_datagram_t)) == SUCCESS){
 			//transmission success
-			dbg("radioDatagram", "[radio>>] Child Unicast datagram Id: %u | Transmission OK | with content: \n", datagram->identifier);
+			dbg("radioDatagram", "[radio>>] Child Unicast datagram Id: %u | Transmission OK | with content: \n", datagram->ID);
 			dbg("radioDatagram", "\t Status: %i \n", datagram->status);
 			dbg("radioDatagram", "\t PosX: %u \n", datagram->posX);
 			dbg("radioDatagram", "\t PosY: %u \n", datagram->posY);
