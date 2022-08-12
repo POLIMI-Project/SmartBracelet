@@ -1,4 +1,5 @@
 #include "smartBracelet.h"
+#include "printf.h"
 
 configuration smartBraceletAppC {}
 
@@ -21,11 +22,10 @@ implementation {
 	//Various
 	components LedsC;
 
-	//Prints - used for Node-Red
-	//components SerialStartC;
+	//Prints - used for Debug and Node-Red
+	components SerialStartC;
 	//components SerialPrintfC;
-	//components SerialActiveMessageC as SAM; 
-	//CFLAGS += -I$(TOSDIR)/lib/printf in make file (doesn't work)
+	components SerialActiveMessageC as SAM;
 	
 	/////////////////////////////////////////////////////////
 	//Interfaces

@@ -1,5 +1,6 @@
 #include "smartBracelet.h"
 #include "Timer.h"
+#include "printf.h"
 
 module smartBraceletC{
 
@@ -111,8 +112,7 @@ implementation{
 		call SplitControl.start();
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	//TIMERS
+	//////////////////////////////////// TIMERS //////////////////////////////////////////
 
 	//starting TimerPairing
 	event void SplitControl.startDone(error_t error){
@@ -143,6 +143,7 @@ implementation{
 	//timer Alert event (alarm)
 	event void TimerAlert.fired(){
 		dbg("radioTX", "[info] Timer Alert fired at %s (missing messages from child in last %i ms) \n", sim_time_string(), T_3);
+		//printf("Missing message\n");
 		call Leds.led0Off();
 		call Leds.led1Off();
 		call Leds.led2Off();

@@ -898,7 +898,7 @@ extern void *malloc(size_t __size) __attribute((__leaf__)) __attribute((__nothro
 #line 483
 extern void free(void *__ptr) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 741
-typedef int (*__compar_fn_t)(const void *arg_0xb7b4d458, const void *arg_0xb7b4d5f0);
+typedef int (*__compar_fn_t)(const void *arg_0xb7b8d458, const void *arg_0xb7b8d5f0);
 #line 779
 __extension__ 
 #line 796
@@ -917,7 +917,7 @@ extern double sqrt(double __x) __attribute((__leaf__)) __attribute((__nothrow__)
 #line 184
 extern double floor(double __x) __attribute((__leaf__)) __attribute((__nothrow__)) __attribute((const)) ;
 #line 260
-extern double erfc(double arg_0xb7afe8c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
+extern double erfc(double arg_0xb7b3e8c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 336
 __extension__ 
 
@@ -1312,8 +1312,8 @@ typedef struct hashtable hashtable_t;
 #line 78
 struct hashtable *
 create_hashtable(unsigned int minsize, 
-unsigned int (*hashfunction)(void *arg_0xb79a8840), 
-int (*key_eq_fn)(void *arg_0xb79a8c88, void *arg_0xb79a8e00));
+unsigned int (*hashfunction)(void *arg_0xb79e8840), 
+int (*key_eq_fn)(void *arg_0xb79e8c88, void *arg_0xb79e8e00));
 #line 103
 #line 102
 int 
@@ -1349,7 +1349,7 @@ typedef struct sim_log_channel {
 } sim_log_channel_t;
 
 enum __nesc_unnamed4273 {
-  SIM_LOG_OUTPUT_COUNT = 228U
+  SIM_LOG_OUTPUT_COUNT = 230U
 };
 
 sim_log_output_t outputs[SIM_LOG_OUTPUT_COUNT];
@@ -1926,7 +1926,7 @@ struct tm;
 
 struct tm;
 # 46 "/opt/tinyos-main-2.1.2/tos/lib/tossim/randomlib.h"
-static inline void RandomInitialise(int arg_0xb78779b8, int arg_0xb7877b10);
+static inline void RandomInitialise(int arg_0xb78b79b8, int arg_0xb78b7b10);
 static double RandomUniform(void );
 # 51 "/opt/tinyos-main-2.1.2/tos/lib/tossim/sim_noise.c"
 int numCase1 = 0;
@@ -2316,8 +2316,60 @@ typedef nx_struct pairing_datagram_ack {
 enum __nesc_unnamed4281 {
   AM_DATAGRAM = 2 * 2
 };
-# 25 "/opt/tinyos-main-2.1.2/tos/chips/atm128/sim/atm128_sim.h"
+# 29 "/opt/tinyos-main-2.1.2/tos/lib/printf/generic_printf.h"
+extern int lowlevel_putc(int c);
+
+int left_val;
+#line 31
+int right_val;
+
+
+
+
+
+long temp_arr[10] = { 100000, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
+
+
+
+
+
+
+
+
+
+static 
+#line 46
+int 
+_putchar(int c);
+#line 66
+static 
+#line 65
+int 
+_puts(const char *s);
+#line 82
+static 
+#line 81
+void 
+strrev(char *str);
+#line 100
+static void print_hex_oct(long int temp_var, int _div, int corr_factor, int ret_val, int sign, int *cntr_val);
+#line 147
+inline static void float_print(long double f1, long double f2, int multi, int *cntr_val);
+#line 208
+static int format_val(char *temp, long float_flag, int *cntr_val, int flag);
+#line 262
+static inline int _printf(const char *format, ...);
+# 79 "/opt/tinyos-main-2.1.2/tos/lib/printf/printf.h"
+#line 77
+typedef nx_struct printf_msg {
+  nx_uint8_t buffer[28];
+} __attribute__((packed)) printf_msg_t;
+
 enum __nesc_unnamed4282 {
+  AM_PRINTF_MSG = 100
+};
+# 25 "/opt/tinyos-main-2.1.2/tos/chips/atm128/sim/atm128_sim.h"
+enum __nesc_unnamed4283 {
 
   ATM128_PINF = 0x00, 
 
@@ -2617,7 +2669,7 @@ enum __nesc_unnamed4282 {
   ATM128_UCSR1C = 0x9D
 };
 #line 673
-enum __nesc_unnamed4283 {
+enum __nesc_unnamed4284 {
 
   TWINT = 7, 
   TWEA = 6, 
@@ -3282,7 +3334,7 @@ typedef uint8_t mcu_power_t  ;
 
 
 
-enum __nesc_unnamed4284 {
+enum __nesc_unnamed4285 {
   ATM128_POWER_IDLE = 0, 
   ATM128_POWER_ADC_NR = 1, 
   ATM128_POWER_EXT_STANDBY = 2, 
@@ -3291,7 +3343,7 @@ enum __nesc_unnamed4284 {
   ATM128_POWER_DOWN = 5
 };
 # 43 "/opt/tinyos-main-2.1.2/tos/chips/atm128/adc/Atm128Adc.h"
-enum __nesc_unnamed4285 {
+enum __nesc_unnamed4286 {
   ATM128_ADC_VREF_OFF = 0, 
   ATM128_ADC_VREF_AVCC = 1, 
   ATM128_ADC_VREF_RSVD, 
@@ -3299,14 +3351,14 @@ enum __nesc_unnamed4285 {
 };
 
 
-enum __nesc_unnamed4286 {
+enum __nesc_unnamed4287 {
   ATM128_ADC_RIGHT_ADJUST = 0, 
   ATM128_ADC_LEFT_ADJUST = 1
 };
 
 
 
-enum __nesc_unnamed4287 {
+enum __nesc_unnamed4288 {
   ATM128_ADC_SNGL_ADC0 = 0, 
   ATM128_ADC_SNGL_ADC1, 
   ATM128_ADC_SNGL_ADC2, 
@@ -3348,7 +3400,7 @@ enum __nesc_unnamed4287 {
 
 
 #line 94
-typedef struct __nesc_unnamed4288 {
+typedef struct __nesc_unnamed4289 {
 
   uint8_t mux : 5;
   uint8_t adlar : 1;
@@ -3358,7 +3410,7 @@ typedef struct __nesc_unnamed4288 {
 
 
 
-enum __nesc_unnamed4289 {
+enum __nesc_unnamed4290 {
   ATM128_ADC_PRESCALE_2 = 0, 
   ATM128_ADC_PRESCALE_2b, 
   ATM128_ADC_PRESCALE_4, 
@@ -3374,31 +3426,31 @@ enum __nesc_unnamed4289 {
 };
 
 
-enum __nesc_unnamed4290 {
+enum __nesc_unnamed4291 {
   ATM128_ADC_ENABLE_OFF = 0, 
   ATM128_ADC_ENABLE_ON
 };
 
 
-enum __nesc_unnamed4291 {
+enum __nesc_unnamed4292 {
   ATM128_ADC_START_CONVERSION_OFF = 0, 
   ATM128_ADC_START_CONVERSION_ON
 };
 
 
-enum __nesc_unnamed4292 {
+enum __nesc_unnamed4293 {
   ATM128_ADC_FREE_RUNNING_OFF = 0, 
   ATM128_ADC_FREE_RUNNING_ON
 };
 
 
-enum __nesc_unnamed4293 {
+enum __nesc_unnamed4294 {
   ATM128_ADC_INT_FLAG_OFF = 0, 
   ATM128_ADC_INT_FLAG_ON
 };
 
 
-enum __nesc_unnamed4294 {
+enum __nesc_unnamed4295 {
   ATM128_ADC_INT_ENABLE_OFF = 0, 
   ATM128_ADC_INT_ENABLE_ON
 };
@@ -3413,7 +3465,7 @@ enum __nesc_unnamed4294 {
 
 
 #line 150
-typedef struct __nesc_unnamed4295 {
+typedef struct __nesc_unnamed4296 {
 
   uint8_t adps : 3;
   uint8_t adie : 1;
@@ -3426,7 +3478,7 @@ typedef struct __nesc_unnamed4295 {
 typedef uint8_t Atm128_ADCH_t;
 typedef uint8_t Atm128_ADCL_t;
 # 54 "/opt/tinyos-main-2.1.2/tos/platforms/micaz/sim/platform_hardware.h"
-enum __nesc_unnamed4296 {
+enum __nesc_unnamed4297 {
   CHANNEL_RSSI = ATM128_ADC_SNGL_ADC0, 
   CHANNEL_THERMISTOR = ATM128_ADC_SNGL_ADC1, 
   CHANNEL_BATTERY = ATM128_ADC_SNGL_ADC7, 
@@ -3438,32 +3490,32 @@ enum __nesc_unnamed4296 {
 # 41 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimMainP.nc"
 static void __nesc_nido_initialise(int node);
 # 41 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.h"
-typedef struct __nesc_unnamed4297 {
+typedef struct __nesc_unnamed4298 {
 #line 41
   int notUsed;
 } 
 #line 41
 TSecond;
-typedef struct __nesc_unnamed4298 {
+typedef struct __nesc_unnamed4299 {
 #line 42
   int notUsed;
 } 
 #line 42
 TMilli;
-typedef struct __nesc_unnamed4299 {
+typedef struct __nesc_unnamed4300 {
 #line 43
   int notUsed;
 } 
 #line 43
 T32khz;
-typedef struct __nesc_unnamed4300 {
+typedef struct __nesc_unnamed4301 {
 #line 44
   int notUsed;
 } 
 #line 44
 TMicro;
 # 43 "/opt/tinyos-main-2.1.2/tos/types/Leds.h"
-enum __nesc_unnamed4301 {
+enum __nesc_unnamed4302 {
   LEDS_LED0 = 1 << 0, 
   LEDS_LED1 = 1 << 1, 
   LEDS_LED2 = 1 << 2, 
@@ -3474,7 +3526,7 @@ enum __nesc_unnamed4301 {
   LEDS_LED7 = 1 << 7
 };
 # 52 "/opt/tinyos-main-2.1.2/tos/chips/atm128/timer/Atm128Timer.h"
-enum __nesc_unnamed4302 {
+enum __nesc_unnamed4303 {
   ATM128_CLK8_OFF = 0x0, 
   ATM128_CLK8_NORMAL = 0x1, 
   ATM128_CLK8_DIVIDE_8 = 0x2, 
@@ -3485,7 +3537,7 @@ enum __nesc_unnamed4302 {
   ATM128_CLK8_DIVIDE_1024 = 0x7
 };
 
-enum __nesc_unnamed4303 {
+enum __nesc_unnamed4304 {
   ATM128_CLK16_OFF = 0x0, 
   ATM128_CLK16_NORMAL = 0x1, 
   ATM128_CLK16_DIVIDE_8 = 0x2, 
@@ -3497,14 +3549,14 @@ enum __nesc_unnamed4303 {
 };
 
 
-enum __nesc_unnamed4304 {
+enum __nesc_unnamed4305 {
   AVR_CLOCK_OFF = 0, 
   AVR_CLOCK_ON = 1, 
   AVR_CLOCK_DIVIDE_8 = 2
 };
 
 
-enum __nesc_unnamed4305 {
+enum __nesc_unnamed4306 {
   ATM128_WAVE8_NORMAL = 0, 
   ATM128_WAVE8_PWM, 
   ATM128_WAVE8_CTC, 
@@ -3512,7 +3564,7 @@ enum __nesc_unnamed4305 {
 };
 
 
-enum __nesc_unnamed4306 {
+enum __nesc_unnamed4307 {
   ATM128_COMPARE_OFF = 0, 
   ATM128_COMPARE_TOGGLE, 
   ATM128_COMPARE_CLEAR, 
@@ -3520,10 +3572,10 @@ enum __nesc_unnamed4306 {
 };
 #line 108
 #line 98
-typedef union __nesc_unnamed4307 {
+typedef union __nesc_unnamed4308 {
 
   uint8_t flat;
-  struct __nesc_unnamed4308 {
+  struct __nesc_unnamed4309 {
     uint8_t cs : 3;
     uint8_t wgm1 : 1;
     uint8_t com : 2;
@@ -3541,10 +3593,10 @@ typedef uint8_t Atm128_TCNT2_t;
 typedef uint8_t Atm128_OCR2_t;
 #line 130
 #line 120
-typedef union __nesc_unnamed4309 {
+typedef union __nesc_unnamed4310 {
 
   uint8_t flat;
-  struct __nesc_unnamed4310 {
+  struct __nesc_unnamed4311 {
     uint8_t tcr0ub : 1;
     uint8_t ocr0ub : 1;
     uint8_t tcn0ub : 1;
@@ -3554,10 +3606,10 @@ typedef union __nesc_unnamed4309 {
 } Atm128Assr_t;
 #line 146
 #line 133
-typedef union __nesc_unnamed4311 {
+typedef union __nesc_unnamed4312 {
 
   uint8_t flat;
-  struct __nesc_unnamed4312 {
+  struct __nesc_unnamed4313 {
     uint8_t toie0 : 1;
     uint8_t ocie0 : 1;
     uint8_t toie1 : 1;
@@ -3570,10 +3622,10 @@ typedef union __nesc_unnamed4311 {
 } Atm128_TIMSK_t;
 #line 163
 #line 150
-typedef union __nesc_unnamed4313 {
+typedef union __nesc_unnamed4314 {
 
   uint8_t flat;
-  struct __nesc_unnamed4314 {
+  struct __nesc_unnamed4315 {
     uint8_t tov0 : 1;
     uint8_t ocf0 : 1;
     uint8_t tov1 : 1;
@@ -3586,10 +3638,10 @@ typedef union __nesc_unnamed4313 {
 } Atm128_TIFR_t;
 #line 178
 #line 167
-typedef union __nesc_unnamed4315 {
+typedef union __nesc_unnamed4316 {
 
   uint8_t flat;
-  struct __nesc_unnamed4316 {
+  struct __nesc_unnamed4317 {
     uint8_t psr321 : 1;
     uint8_t psr0 : 1;
     uint8_t pud : 1;
@@ -3604,7 +3656,7 @@ typedef union __nesc_unnamed4315 {
 
 
 
-enum __nesc_unnamed4317 {
+enum __nesc_unnamed4318 {
   ATM128_TIMER_COMPARE_NORMAL = 0, 
   ATM128_TIMER_COMPARE_TOGGLE, 
   ATM128_TIMER_COMPARE_CLEAR, 
@@ -3612,10 +3664,10 @@ enum __nesc_unnamed4317 {
 };
 #line 202
 #line 193
-typedef union __nesc_unnamed4318 {
+typedef union __nesc_unnamed4319 {
 
   uint8_t flat;
-  struct __nesc_unnamed4319 {
+  struct __nesc_unnamed4320 {
     uint8_t wgm10 : 2;
     uint8_t comC : 2;
     uint8_t comB : 2;
@@ -3630,7 +3682,7 @@ typedef Atm128TimerCtrlCompare_t Atm128_TCCR1A_t;
 typedef Atm128TimerCtrlCompare_t Atm128_TCCR3A_t;
 
 
-enum __nesc_unnamed4320 {
+enum __nesc_unnamed4321 {
   ATM128_WAVE16_NORMAL = 0, 
   ATM128_WAVE16_PWM_8BIT, 
   ATM128_WAVE16_PWM_9BIT, 
@@ -3650,10 +3702,10 @@ enum __nesc_unnamed4320 {
 };
 #line 241
 #line 231
-typedef union __nesc_unnamed4321 {
+typedef union __nesc_unnamed4322 {
 
   uint8_t flat;
-  struct __nesc_unnamed4322 {
+  struct __nesc_unnamed4323 {
     uint8_t cs : 3;
     uint8_t wgm32 : 2;
     uint8_t rsvd : 1;
@@ -3669,10 +3721,10 @@ typedef Atm128TimerCtrlCapture_t Atm128_TCCR1B_t;
 typedef Atm128TimerCtrlCapture_t Atm128_TCCR3B_t;
 #line 259
 #line 250
-typedef union __nesc_unnamed4323 {
+typedef union __nesc_unnamed4324 {
 
   uint8_t flat;
-  struct __nesc_unnamed4324 {
+  struct __nesc_unnamed4325 {
     uint8_t rsvd : 5;
     uint8_t focC : 1;
     uint8_t focB : 1;
@@ -3716,10 +3768,10 @@ typedef uint8_t Atm128_ICR3H_t;
 typedef uint8_t Atm128_ICR3L_t;
 #line 309
 #line 297
-typedef union __nesc_unnamed4325 {
+typedef union __nesc_unnamed4326 {
 
   uint8_t flat;
-  struct __nesc_unnamed4326 {
+  struct __nesc_unnamed4327 {
     uint8_t ocie1c : 1;
     uint8_t ocie3c : 1;
     uint8_t toie3 : 1;
@@ -3731,10 +3783,10 @@ typedef union __nesc_unnamed4325 {
 } Atm128_ETIMSK_t;
 #line 324
 #line 312
-typedef union __nesc_unnamed4327 {
+typedef union __nesc_unnamed4328 {
 
   uint8_t flat;
-  struct __nesc_unnamed4328 {
+  struct __nesc_unnamed4329 {
     uint8_t ocf1c : 1;
     uint8_t ocf3c : 1;
     uint8_t tov3 : 1;
@@ -3747,7 +3799,7 @@ typedef union __nesc_unnamed4327 {
 typedef TMilli smartBraceletC$TimerTransmitting$precision_tag;
 typedef TMilli smartBraceletC$TimerAlert$precision_tag;
 typedef TMilli smartBraceletC$TimerPairing$precision_tag;
-enum AMQueueP$__nesc_unnamed4329 {
+enum AMQueueP$__nesc_unnamed4330 {
   AMQueueP$NUM_CLIENTS = 1U
 };
 typedef uint16_t RandomMlcgC$SeedInit$parameter;
@@ -3813,11 +3865,11 @@ static error_t MeasureClockC$Init$init(void );
 # 67 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
 static error_t SimSchedulerBasicP$TaskBasic$postTask(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0xb77d3650);
+uint8_t arg_0xb7813650);
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$default$runTask(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0xb77d3650);
+uint8_t arg_0xb7813650);
 # 57 "/opt/tinyos-main-2.1.2/tos/interfaces/Scheduler.nc"
 static void SimSchedulerBasicP$Scheduler$init(void );
 
@@ -3847,7 +3899,7 @@ static long long int SimMoteP$SimMote$getStartTime(void );
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static error_t TossimActiveMessageC$AMSend$send(
 # 47 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7617108, 
+am_id_t arg_0xb761f108, 
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -3870,7 +3922,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$default$receive(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7616178, 
+am_id_t arg_0xb761c178, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3917,7 +3969,7 @@ message_t *
 
 TossimActiveMessageC$Receive$default$receive(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7617ac8, 
+am_id_t arg_0xb761fac8, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4095,7 +4147,7 @@ error_t error);
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(
 # 48 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0xb747dc40, 
+am_id_t arg_0xb74820a0, 
 # 103 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4108,7 +4160,7 @@ error_t error);
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$send(
 # 46 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0xb747d258, 
+uint8_t arg_0xb74846a8, 
 # 67 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4122,7 +4174,7 @@ uint8_t len);
 #line 100
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(
 # 46 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0xb747d258, 
+uint8_t arg_0xb74846a8, 
 # 96 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4205,17 +4257,17 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fire
 #line 83
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb72f03a8);
+uint8_t arg_0xb72f9c70);
 # 64 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startPeriodic(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb72f03a8, 
+uint8_t arg_0xb72f9c70, 
 # 64 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.nc"
 uint32_t dt);
 #line 78
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$stop(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb72f03a8);
+uint8_t arg_0xb72f9c70);
 # 82 "/opt/tinyos-main-2.1.2/tos/lib/timer/Counter.nc"
 static void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$overflow(void );
 # 62 "/opt/tinyos-main-2.1.2/tos/interfaces/Init.nc"
@@ -4236,6 +4288,18 @@ static void LedsP$Leds$led2Toggle(void );
 static void LedsP$Leds$led1Off(void );
 #line 94
 static void LedsP$Leds$led2Off(void );
+# 60 "/opt/tinyos-main-2.1.2/tos/interfaces/Boot.nc"
+static void SerialStartP$Boot$booted(void );
+# 113 "/opt/tinyos-main-2.1.2/tos/interfaces/SplitControl.nc"
+static void SerialStartP$SerialControl$startDone(error_t error);
+#line 138
+static void SerialStartP$SerialControl$stopDone(error_t error);
+#line 104
+static error_t SerialActiveMessageC$SplitControl$start(void );
+# 75 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
+static void SerialActiveMessageC$startDone$runTask(void );
+#line 75
+static void SerialActiveMessageC$stopDone$runTask(void );
 # 62 "/opt/tinyos-main-2.1.2/tos/interfaces/Init.nc"
 static error_t PlatformP$MoteInit$init(void );
 #line 62
@@ -4313,13 +4377,13 @@ int sim_main_start_mote(void )   ;
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$runTask(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0xb77d3650);
+uint8_t arg_0xb7813650);
 
 
 
-enum SimSchedulerBasicP$__nesc_unnamed4330 {
+enum SimSchedulerBasicP$__nesc_unnamed4331 {
 
-  SimSchedulerBasicP$NUM_TASKS = 12U, 
+  SimSchedulerBasicP$NUM_TASKS = 14U, 
   SimSchedulerBasicP$NO_TASK = 255
 };
 
@@ -4481,7 +4545,7 @@ static am_addr_t TossimActiveMessageC$amAddress(void );
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static void TossimActiveMessageC$AMSend$sendDone(
 # 47 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7617108, 
+am_id_t arg_0xb761f108, 
 # 103 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4500,7 +4564,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$receive(
 # 49 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7616178, 
+am_id_t arg_0xb761c178, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4519,7 +4583,7 @@ message_t *
 
 TossimActiveMessageC$Receive$receive(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0xb7617ac8, 
+am_id_t arg_0xb761fac8, 
 # 71 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4654,7 +4718,7 @@ double reverseGain);
 static bool TossimPacketModelC$GainRadioModel$clearChannel(void );
 static void TossimPacketModelC$GainRadioModel$setPendingTransmission(void );
 # 96 "/opt/tinyos-main-2.1.2/tos/lib/tossim/TossimPacketModelC.nc"
-enum TossimPacketModelC$__nesc_unnamed4331 {
+enum TossimPacketModelC$__nesc_unnamed4332 {
 #line 96
   TossimPacketModelC$startDoneTask = 0U
 };
@@ -4664,14 +4728,14 @@ typedef int TossimPacketModelC$__nesc_sillytask_startDoneTask[TossimPacketModelC
 
 
 
-enum TossimPacketModelC$__nesc_unnamed4332 {
+enum TossimPacketModelC$__nesc_unnamed4333 {
 #line 101
   TossimPacketModelC$stopDoneTask = 1U
 };
 #line 101
 typedef int TossimPacketModelC$__nesc_sillytask_stopDoneTask[TossimPacketModelC$stopDoneTask];
 #line 145
-enum TossimPacketModelC$__nesc_unnamed4333 {
+enum TossimPacketModelC$__nesc_unnamed4334 {
 #line 145
   TossimPacketModelC$sendDoneTask = 2U
 };
@@ -4961,40 +5025,40 @@ message_t * msg);
 static error_t smartBraceletC$transmitChildDatagram$postTask(void );
 #line 67
 static error_t smartBraceletC$alarmMissing$postTask(void );
-# 62 "smartBraceletC.nc"
-enum smartBraceletC$__nesc_unnamed4334 {
-#line 62
-  smartBraceletC$transmitBroadcastDatagram = 3U
-};
-#line 62
-typedef int smartBraceletC$__nesc_sillytask_transmitBroadcastDatagram[smartBraceletC$transmitBroadcastDatagram];
+# 63 "smartBraceletC.nc"
 enum smartBraceletC$__nesc_unnamed4335 {
 #line 63
-  smartBraceletC$transmitUnicastDatagram = 4U
+  smartBraceletC$transmitBroadcastDatagram = 3U
 };
 #line 63
-typedef int smartBraceletC$__nesc_sillytask_transmitUnicastDatagram[smartBraceletC$transmitUnicastDatagram];
+typedef int smartBraceletC$__nesc_sillytask_transmitBroadcastDatagram[smartBraceletC$transmitBroadcastDatagram];
 enum smartBraceletC$__nesc_unnamed4336 {
 #line 64
-  smartBraceletC$transmitChildDatagram = 5U
+  smartBraceletC$transmitUnicastDatagram = 4U
 };
 #line 64
+typedef int smartBraceletC$__nesc_sillytask_transmitUnicastDatagram[smartBraceletC$transmitUnicastDatagram];
+enum smartBraceletC$__nesc_unnamed4337 {
+#line 65
+  smartBraceletC$transmitChildDatagram = 5U
+};
+#line 65
 typedef int smartBraceletC$__nesc_sillytask_transmitChildDatagram[smartBraceletC$transmitChildDatagram];
 
 
-enum smartBraceletC$__nesc_unnamed4337 {
-#line 67
-  smartBraceletC$alarmFalling = 6U
-};
-#line 67
-typedef int smartBraceletC$__nesc_sillytask_alarmFalling[smartBraceletC$alarmFalling];
 enum smartBraceletC$__nesc_unnamed4338 {
 #line 68
-  smartBraceletC$alarmMissing = 7U
+  smartBraceletC$alarmFalling = 6U
 };
 #line 68
+typedef int smartBraceletC$__nesc_sillytask_alarmFalling[smartBraceletC$alarmFalling];
+enum smartBraceletC$__nesc_unnamed4339 {
+#line 69
+  smartBraceletC$alarmMissing = 7U
+};
+#line 69
 typedef int smartBraceletC$__nesc_sillytask_alarmMissing[smartBraceletC$alarmMissing];
-#line 39
+#line 40
 uint16_t smartBraceletC$KeyParent[1000][20];
 uint16_t smartBraceletC$KeyChild[1000][20];
 
@@ -5016,7 +5080,7 @@ uint16_t smartBraceletC$coord_Y[1000];
 
 uint8_t smartBraceletC$broadcastDatagramID[1000];
 uint8_t smartBraceletC$infoDatagramID[1000];
-#line 72
+#line 73
 static inline void smartBraceletC$Boot$booted(void );
 #line 118
 static inline void smartBraceletC$SplitControl$startDone(error_t error);
@@ -5036,13 +5100,13 @@ static inline void smartBraceletC$TimerTransmitting$fired(void );
 
 
 static inline void smartBraceletC$TimerAlert$fired(void );
-#line 156
+#line 157
 static inline void smartBraceletC$transmitBroadcastDatagram$runTask(void );
-#line 196
+#line 197
 static inline void smartBraceletC$transmitUnicastDatagram$runTask(void );
-#line 227
+#line 228
 static inline void smartBraceletC$transmitChildDatagram$runTask(void );
-#line 287
+#line 288
 static inline void smartBraceletC$alarmFalling$runTask(void );
 
 
@@ -5054,14 +5118,14 @@ static inline void smartBraceletC$alarmFalling$runTask(void );
 
 
 static inline void smartBraceletC$alarmMissing$runTask(void );
-#line 312
+#line 313
 static inline void smartBraceletC$SplitControl$stopDone(error_t error);
 
 
 
 
 static void smartBraceletC$AMSend$sendDone(message_t *msg, error_t error);
-#line 345
+#line 346
 static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *payload, uint8_t len);
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static void /*smartBraceletAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQueueEntryP$0$AMSend$sendDone(
@@ -5119,7 +5183,7 @@ static inline void /*smartBraceletAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQueueE
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(
 # 48 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-am_id_t arg_0xb747dc40, 
+am_id_t arg_0xb74820a0, 
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -5136,7 +5200,7 @@ uint8_t len);
 # 100 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(
 # 46 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-uint8_t arg_0xb747d258, 
+uint8_t arg_0xb74846a8, 
 # 96 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -5166,14 +5230,14 @@ static am_id_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMPacket$type(
 #line 143
 message_t * amsg);
 # 126 "/opt/tinyos-main-2.1.2/tos/system/AMQueueImplP.nc"
-enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4339 {
+enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4340 {
 #line 126
   AMQueueImplP$0$CancelTask = 8U
 };
 #line 126
 typedef int /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_sillytask_CancelTask[/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$CancelTask];
 #line 169
-enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4340 {
+enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4341 {
 #line 169
   AMQueueImplP$0$errorTask = 9U
 };
@@ -5181,7 +5245,7 @@ enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4340 {
 typedef int /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_sillytask_errorTask[/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$errorTask];
 #line 57
 #line 55
-typedef struct /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4341 {
+typedef struct /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4342 {
   message_t * msg;
 } /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$queue_entry_t;
 
@@ -5265,7 +5329,7 @@ uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAs
 
 
 
-enum /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$__nesc_unnamed4342 {
+enum /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$__nesc_unnamed4343 {
   Atm128AlarmAsyncP$0$MINDT = 2, 
   Atm128AlarmAsyncP$0$MAXT = 230
 };
@@ -5503,7 +5567,7 @@ static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$stop(void );
 # 83 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$fired(void );
 # 74 "/opt/tinyos-main-2.1.2/tos/lib/timer/AlarmToTimerC.nc"
-enum /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$__nesc_unnamed4343 {
+enum /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$__nesc_unnamed4344 {
 #line 74
   AlarmToTimerC$0$fired = 10U
 };
@@ -5545,16 +5609,16 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(
 # 48 "/opt/tinyos-main-2.1.2/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0xb72f03a8);
+uint8_t arg_0xb72f9c70);
 #line 71
-enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4344 {
+enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4345 {
 #line 71
   VirtualizeTimerC$0$updateFromTimer = 11U
 };
 #line 71
 typedef int /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_sillytask_updateFromTimer[/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer];
 #line 53
-enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4345 {
+enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4346 {
 
   VirtualizeTimerC$0$NUM_TIMERS = 3U, 
   VirtualizeTimerC$0$END_OF_LIST = 255
@@ -5568,7 +5632,7 @@ enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4345 {
 
 
 #line 59
-typedef struct /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4346 {
+typedef struct /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4347 {
 
   uint32_t t0;
   uint32_t dt;
@@ -5679,6 +5743,39 @@ static inline void LedsP$Leds$led2Off(void );
 
 
 static void LedsP$Leds$led2Toggle(void );
+# 104 "/opt/tinyos-main-2.1.2/tos/interfaces/SplitControl.nc"
+static error_t SerialStartP$SerialControl$start(void );
+# 44 "/opt/tinyos-main-2.1.2/tos/lib/printf/SerialStartP.nc"
+static inline void SerialStartP$Boot$booted(void );
+
+
+
+static inline void SerialStartP$SerialControl$startDone(error_t error);
+static inline void SerialStartP$SerialControl$stopDone(error_t error);
+# 113 "/opt/tinyos-main-2.1.2/tos/interfaces/SplitControl.nc"
+static void SerialActiveMessageC$SplitControl$startDone(error_t error);
+#line 138
+static void SerialActiveMessageC$SplitControl$stopDone(error_t error);
+# 67 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
+static error_t SerialActiveMessageC$startDone$postTask(void );
+# 67 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SerialActiveMessageC.nc"
+enum SerialActiveMessageC$__nesc_unnamed4348 {
+#line 67
+  SerialActiveMessageC$startDone = 12U
+};
+#line 67
+typedef int SerialActiveMessageC$__nesc_sillytask_startDone[SerialActiveMessageC$startDone];
+enum SerialActiveMessageC$__nesc_unnamed4349 {
+#line 68
+  SerialActiveMessageC$stopDone = 13U
+};
+#line 68
+typedef int SerialActiveMessageC$__nesc_sillytask_stopDone[SerialActiveMessageC$stopDone];
+#line 67
+static inline void SerialActiveMessageC$startDone$runTask(void );
+static inline void SerialActiveMessageC$stopDone$runTask(void );
+
+static inline error_t SerialActiveMessageC$SplitControl$start(void );
 # 78 "/opt/tinyos-main-2.1.2/tos/lib/tossim/heap.c"
 static inline void init_heap(heap_t *heap)
 #line 78
@@ -6193,9 +6290,9 @@ inline static error_t smartBraceletC$transmitUnicastDatagram$postTask(void ){
 #line 67
 }
 #line 67
-# 345 "smartBraceletC.nc"
+# 346 "smartBraceletC.nc"
 static inline message_t *smartBraceletC$Receive$receive(message_t *msg, void *payload, uint8_t len)
-#line 345
+#line 346
 {
 
 
@@ -6315,13 +6412,13 @@ static inline message_t *TossimActiveMessageC$Receive$default$receive(am_id_t id
 }
 
 # 78 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0xb7617ac8, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0xb761fac8, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-  switch (arg_0xb7617ac8) {
+  switch (arg_0xb761fac8) {
 #line 78
     case 4:
 #line 78
@@ -6331,7 +6428,7 @@ inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0xb76
 #line 78
     default:
 #line 78
-      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0xb7617ac8, msg, payload, len);
+      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0xb761fac8, msg, payload, len);
 #line 78
       break;
 #line 78
@@ -6439,7 +6536,7 @@ static inline sim_time_t HplAtm128Timer0AsyncP$sim_to_clock(sim_time_t t)
 # 53 "/opt/tinyos-main-2.1.2/tos/chips/atm128/timer/HplAtm128TimerCtrl8.nc"
 inline static Atm128_TIFR_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$getInterruptFlag(void ){
 #line 53
-  union __nesc_unnamed4313 __nesc_result;
+  union __nesc_unnamed4314 __nesc_result;
 #line 53
 
 #line 53
@@ -6501,13 +6598,13 @@ static inline message_t *TossimActiveMessageC$Snoop$default$receive(am_id_t id, 
 }
 
 # 78 "/opt/tinyos-main-2.1.2/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0xb7616178, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0xb761c178, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0xb7616178, msg, payload, len);
+    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0xb761c178, msg, payload, len);
 #line 78
 
 #line 78
@@ -6673,9 +6770,9 @@ static inline void TossimPacketModelC$startDoneTask$runTask(void )
   TossimPacketModelC$Control$startDone(SUCCESS);
 }
 
-# 312 "smartBraceletC.nc"
+# 313 "smartBraceletC.nc"
 static inline void smartBraceletC$SplitControl$stopDone(error_t error)
-#line 312
+#line 313
 {
   sim_log_debug(175U, "radioDatagram", "Error found! Stop the radio signal");
 }
@@ -6729,9 +6826,9 @@ static __inline  int8_t __nesc_hton_int8(void * target, int8_t value)
 }
 
 # 110 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
-inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0xb7617108, message_t * msg, error_t error){
+inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0xb761f108, message_t * msg, error_t error){
 #line 110
-  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0xb7617108, msg, error);
+  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0xb761f108, msg, error);
 #line 110
 }
 #line 110
@@ -6813,9 +6910,9 @@ inline static void * smartBraceletC$Packet$getPayload(message_t * msg, uint8_t l
 #line 126
 }
 #line 126
-# 156 "smartBraceletC.nc"
+# 157 "smartBraceletC.nc"
 static inline void smartBraceletC$transmitBroadcastDatagram$runTask(void )
-#line 156
+#line 157
 {
 
 
@@ -6881,9 +6978,9 @@ inline static error_t smartBraceletC$PacketAcknowledgements$requestAck(message_t
 #line 59
 }
 #line 59
-# 196 "smartBraceletC.nc"
+# 197 "smartBraceletC.nc"
 static inline void smartBraceletC$transmitUnicastDatagram$runTask(void )
-#line 196
+#line 197
 {
 
 
@@ -6935,9 +7032,9 @@ inline static uint16_t smartBraceletC$Random$rand16(void ){
 #line 52
 }
 #line 52
-# 227 "smartBraceletC.nc"
+# 228 "smartBraceletC.nc"
 static inline void smartBraceletC$transmitChildDatagram$runTask(void )
-#line 227
+#line 228
 {
 
 
@@ -6956,21 +7053,21 @@ static inline void smartBraceletC$transmitChildDatagram$runTask(void )
       sendStatus = 3;
     }
   else {
-#line 244
+#line 245
     if (rnd >= 4 && rnd <= 6) {
 
 
         sendStatus = 4;
       }
     else {
-#line 249
+#line 250
       if (rnd >= 7 && rnd <= 9) {
 
 
           sendStatus = 5;
         }
       else {
-#line 254
+#line 255
         if (rnd == 10) {
 
 
@@ -7010,9 +7107,9 @@ inline static void smartBraceletC$Leds$led0Toggle(void ){
 #line 67
 }
 #line 67
-# 287 "smartBraceletC.nc"
+# 288 "smartBraceletC.nc"
 static inline void smartBraceletC$alarmFalling$runTask(void )
-#line 287
+#line 288
 {
 
 
@@ -7024,7 +7121,7 @@ static inline void smartBraceletC$alarmFalling$runTask(void )
 
 
 static inline void smartBraceletC$alarmMissing$runTask(void )
-#line 297
+#line 298
 {
 
 
@@ -7064,9 +7161,9 @@ static inline void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone
 }
 
 # 100 "/opt/tinyos-main-2.1.2/tos/interfaces/Send.nc"
-inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0xb747d258, message_t * msg, error_t error){
+inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0xb74846a8, message_t * msg, error_t error){
 #line 100
-  switch (arg_0xb747d258) {
+  switch (arg_0xb74846a8) {
 #line 100
     case 0U:
 #line 100
@@ -7076,7 +7173,7 @@ inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t
 #line 100
     default:
 #line 100
-      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0xb747d258, msg, error);
+      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0xb74846a8, msg, error);
 #line 100
       break;
 #line 100
@@ -7286,15 +7383,57 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateF
     }
 }
 
+# 48 "/opt/tinyos-main-2.1.2/tos/lib/printf/SerialStartP.nc"
+static inline void SerialStartP$SerialControl$startDone(error_t error)
+#line 48
+{
+}
+
+# 113 "/opt/tinyos-main-2.1.2/tos/interfaces/SplitControl.nc"
+inline static void SerialActiveMessageC$SplitControl$startDone(error_t error){
+#line 113
+  SerialStartP$SerialControl$startDone(error);
+#line 113
+}
+#line 113
+# 67 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SerialActiveMessageC.nc"
+static inline void SerialActiveMessageC$startDone$runTask(void )
+#line 67
+{
+#line 67
+  SerialActiveMessageC$SplitControl$startDone(SUCCESS);
+}
+
+# 49 "/opt/tinyos-main-2.1.2/tos/lib/printf/SerialStartP.nc"
+static inline void SerialStartP$SerialControl$stopDone(error_t error)
+#line 49
+{
+}
+
+# 138 "/opt/tinyos-main-2.1.2/tos/interfaces/SplitControl.nc"
+inline static void SerialActiveMessageC$SplitControl$stopDone(error_t error){
+#line 138
+  SerialStartP$SerialControl$stopDone(error);
+#line 138
+}
+#line 138
+# 68 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SerialActiveMessageC.nc"
+static inline void SerialActiveMessageC$stopDone$runTask(void )
+#line 68
+{
+#line 68
+  SerialActiveMessageC$SplitControl$stopDone(SUCCESS);
+}
+
 # 221 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SimSchedulerBasicP.nc"
 static inline void SimSchedulerBasicP$TaskBasic$default$runTask(uint8_t id)
 {
 }
 
 # 75 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
-inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0xb77d3650){
+inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0xb7813650){
 #line 75
-  switch (arg_0xb77d3650) {
+  switch (arg_0xb7813650) {
 #line 75
     case TossimPacketModelC$startDoneTask:
 #line 75
@@ -7368,9 +7507,21 @@ inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0xb77d3650){
 #line 75
       break;
 #line 75
+    case SerialActiveMessageC$startDone:
+#line 75
+      SerialActiveMessageC$startDone$runTask();
+#line 75
+      break;
+#line 75
+    case SerialActiveMessageC$stopDone:
+#line 75
+      SerialActiveMessageC$stopDone$runTask();
+#line 75
+      break;
+#line 75
     default:
 #line 75
-      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0xb77d3650);
+      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0xb7813650);
 #line 75
       break;
 #line 75
@@ -7510,11 +7661,329 @@ inline static void smartBraceletC$Leds$led2Off(void ){
 #line 94
 }
 #line 94
+# 147 "/opt/tinyos-main-2.1.2/tos/lib/printf/generic_printf.h"
+inline static void float_print(long double f1, long double f2, int multi, int *cntr_val)
+{
+  int temp;
+#line 149
+  int cntr = 0;
+#line 149
+  int i1;
+#line 149
+  int neg_flag = 0;
+  char s1[10];
+
+  if (f1 < 0) 
+    {
+      f1 = f1 * -1;
+      neg_flag = 1;
+      f2 = f1;
+    }
+  temp = (int )f1;
+
+  f1 = f1 - temp;
+  f1 = f1 * multi;
+
+  temp = f1;
+
+  if (temp == 0) {
+    s1[cntr++] = '0';
+    }
+#line 167
+  while (temp > 0) 
+    {
+      i1 = temp % 10;
+      temp = temp / 10;
+      s1[cntr] = i1 + 0x30;
+      cntr++;
+    }
+
+  while (right_val < 9 && right_val - cntr > 0) 
+    s1[cntr++] = '0';
+  s1[cntr] = '.';
+  cntr++;
+
+  temp = (int )f2;
+  if (temp == 0) {
+    s1[cntr++] = '0';
+    }
+#line 183
+  while (temp > 0) 
+    {
+      i1 = temp % 10;
+      temp = temp / 10;
+      s1[cntr] = i1 + 0x30;
+      cntr++;
+    }
+
+  while (left_val-- - cntr > 0) 
+    {
+      _putchar(' ');
+      (*cntr_val)++;
+    }
+  if (neg_flag == 1) {
+    s1[cntr++] = '-';
+    }
+#line 198
+  s1[cntr] = '\0';
+  cntr--;
+  strrev(s1);
+  _puts(s1);
+  *cntr_val += strlen(s1);
+  neg_flag = 0;
+}
+
+#line 262
+static inline int _printf(const char *format, ...)
+{
+  int format_cntr = 0;
+  char temp_str[20];
+  int return_flag = 0;
+#line 266
+  int cntr_val;
+  long double f1;
+#line 267
+  long double f2;
+  char *str_temp;
+  int *cntr = &cntr_val;
+
+  va_list ap;
+
+#line 272
+  __builtin_va_start(ap, format);
+  *cntr = 0;
+  while (*format) {
+      temp_str[format_cntr] = '\0';
+      if (*format == '%') 
+        {
+          * format++;
+          while (*format == ' ') 
+            {
+              format++;
+              _putchar(' ');
+            }
+          while (*format != 'f' && *format != 'd' && *format != 'c' && *format != 's' && *format != 'l' && *format != 'u' && *format != '\0' && *format != ' ' && *format != 'i' && *format != 'x' && *format != 'X' && *format != 'o' && *format != '%' && *format != 'p') 
+
+            {
+              temp_str[format_cntr++] = * format++;
+            }
+          temp_str[format_cntr] = '\0';
+          if (*format == '%') 
+            {
+              _putchar('%');
+              (*cntr)++;
+              format_cntr = 0;
+              format++;
+              continue;
+            }
+          else {
+
+            if (*format == 'u') 
+              {
+                return_flag = format_val(temp_str, 0, cntr, 0);
+                if (return_flag != -1) {
+
+                  print_hex_oct((__builtin_va_arg(ap, unsigned int )), 10, 0, return_flag, 0, cntr);
+                  }
+                else 
+                  {
+                    _putchar(*format);
+                    (*cntr)++;
+                  }
+                format++;
+                format_cntr = 0;
+                continue;
+              }
+            else {
+              if (*format == 'd' || *format == 'i') 
+                {
+                  return_flag = format_val(temp_str, 0, cntr, 0);
+
+                  if (return_flag != -1) {
+
+                    print_hex_oct((__builtin_va_arg(ap, int )), 10, 0, return_flag, 1, cntr);
+                    }
+                  else 
+                    {
+                      _putchar(*format);
+                      (*cntr)++;
+                    }
+                  format++;
+                  format_cntr = 0;
+                  continue;
+                }
+              else {
+
+
+                if (((*format == 'x' || *format == 'X') || *format == 'o') || *format == 'p') 
+                  {
+                    return_flag = format_val(temp_str, 0, cntr, 0);
+                    if (return_flag != -1) {
+
+                        if (*format == 'x' || *format == 'p') {
+                          print_hex_oct((__builtin_va_arg(ap, unsigned int )), 16, 0x60, return_flag, 0, cntr);
+                          }
+                        else {
+#line 344
+                          if (*format == 'X') {
+                            print_hex_oct((__builtin_va_arg(ap, unsigned int )), 16, 0x40, return_flag, 0, cntr);
+                            }
+                          else {
+#line 347
+                            print_hex_oct((__builtin_va_arg(ap, unsigned int )), 8, 0, return_flag, 0, cntr);
+                            }
+                          }
+                      }
+                    else 
+#line 350
+                      {
+                        _putchar(*format);
+                        (*cntr)++;
+                      }
+                    format++;
+                    format_cntr = 0;
+                    continue;
+                  }
+                else {
+
+                  if (*format == 'c') 
+                    {
+                      return_flag = format_val(temp_str, 0, cntr, 0);
+                      if (return_flag != -1) 
+                        {
+                          while (return_flag-- > 1) 
+                            {
+                              _putchar(' ');
+                              (*cntr)++;
+                            }
+                          _putchar((__builtin_va_arg(ap, int )));
+                          *cntr += 2;
+                        }
+                      else 
+                        {
+                          _putchar(*format);
+                          (*cntr)++;
+                        }
+                      format++;
+                      format_cntr = 0;
+                      continue;
+                    }
+                  else {
+
+                    if (*format == 's') 
+                      {
+                        return_flag = format_val(temp_str, 0, cntr, 0);
+                        if (return_flag != -1) 
+                          {
+                            str_temp = (__builtin_va_arg(ap, char *));
+
+                            while (return_flag-- - (int )strlen(str_temp) > 0) 
+                              {
+                                _putchar(' ');
+                                (*cntr)++;
+                              }
+
+                            _puts(str_temp);
+                            *cntr += strlen(str_temp);
+                          }
+                        else 
+                          {
+                            _putchar(*format);
+                            (*cntr)++;
+                          }
+                        format++;
+                        format_cntr = 0;
+                        continue;
+                      }
+                    else {
+
+                      if (*format == 'f' || (*format == 'l' && *(format + 1) == 'f')) 
+                        {
+
+                          return_flag = format_val(temp_str, 1, cntr, 1);
+                          if (return_flag != -1) 
+                            {
+                              if (*format == 'l') 
+                                {
+                                  f1 = (__builtin_va_arg(ap, long double ));
+                                  format += 2;
+                                }
+                              else 
+                                {
+                                  f1 = (__builtin_va_arg(ap, double ));
+                                  format++;
+                                }
+                              f2 = f1;
+
+                              right_val++;
+                              float_print(f1, f2, temp_arr[right_val % 10], cntr);
+                            }
+                          else 
+
+                            {
+                              _putchar(* format++);
+                              (*cntr)++;
+                            }
+                          format_cntr = 0;
+                          continue;
+                        }
+                      else {
+#line 441
+                        if (*format == 'l' && (*(format + 1) == 'd' || *(format + 1) == 'u')) 
+                          {
+                            return_flag = format_val(temp_str, 0, cntr, 0);
+
+                            if ((return_flag = -1) && *(format + 1) == 'd') 
+                              {
+                                print_hex_oct((__builtin_va_arg(ap, long int )), 10, 0x00, return_flag, 1, cntr);
+                              }
+                            else {
+                              if ((return_flag = -1) && *(format + 1) == 'u') 
+                                {
+                                  print_hex_oct((__builtin_va_arg(ap, unsigned long int )), 10, 0x00, return_flag, 0, cntr);
+                                }
+                              else 
+
+                                {
+                                  _putchar(*format);
+                                  _putchar(*(format + 1));
+                                  *cntr += 2;
+                                }
+                              }
+#line 461
+                            format += 2;
+                            format_cntr = 0;
+                            continue;
+                          }
+                        else 
+                          {
+                            _puts(temp_str);
+                            format_cntr = 0;
+                            continue;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+        }
+#line 472
+      _putchar(* format++);
+
+      (*cntr)++;
+    }
+  __builtin_va_end(ap);
+  return cntr_val;
+}
+
 # 144 "smartBraceletC.nc"
 static inline void smartBraceletC$TimerAlert$fired(void )
 #line 144
 {
   sim_log_debug(157U, "radioTX", "[info] Timer Alert fired at %s (missing messages from child in last %i ms) \n", sim_time_string(), 60000);
+  _printf("Missing message\n");
   smartBraceletC$Leds$led0Off();
   smartBraceletC$Leds$led1Off();
   smartBraceletC$Leds$led2Off();
@@ -7527,9 +7996,9 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$d
 }
 
 # 83 "/opt/tinyos-main-2.1.2/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0xb72f03a8){
+inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0xb72f9c70){
 #line 83
-  switch (arg_0xb72f03a8) {
+  switch (arg_0xb72f9c70) {
 #line 83
     case 0U:
 #line 83
@@ -7551,7 +8020,7 @@ inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$f
 #line 83
     default:
 #line 83
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0xb72f03a8);
+      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0xb72f9c70);
 #line 83
       break;
 #line 83
@@ -7962,13 +8431,13 @@ inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$errorTask$postTask
 }
 #line 67
 # 80 "/opt/tinyos-main-2.1.2/tos/interfaces/AMSend.nc"
-inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0xb747dc40, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0xb74820a0, am_addr_t addr, message_t * msg, uint8_t len){
 #line 80
   unsigned char __nesc_result;
 #line 80
 
 #line 80
-  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0xb747dc40, addr, msg, len);
+  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0xb74820a0, addr, msg, len);
 #line 80
 
 #line 80
@@ -9253,16 +9722,16 @@ inline static error_t SimMainP$SoftwareInit$init(void ){
 #line 62
 }
 #line 62
-# 72 "smartBraceletC.nc"
+# 73 "smartBraceletC.nc"
 static inline void smartBraceletC$Boot$booted(void )
-#line 72
+#line 73
 {
 
   int i;
-#line 74
+#line 75
   int n;
 
-#line 75
+#line 76
   sim_log_debug(148U, "node", "[info] Generating preloaded bracelets' keys..\n");
   for (n = 1; n <= 2 * 2; n++) {
 
@@ -9278,7 +9747,7 @@ static inline void smartBraceletC$Boot$booted(void )
               sim_log_debug(149U, "node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, smartBraceletC$KeyParent[sim_node()], 20, smartBraceletC$KeyChild[sim_node()], 20);
             }
           else 
-#line 88
+#line 89
             {
 
               for (i = 0; i < 20; i++) {
@@ -9299,7 +9768,7 @@ static inline void smartBraceletC$Boot$booted(void )
       sim_log_debug(151U, "node", "[info] TOS_Node: %i is a PARENT\n", TOS_NODE_ID);
     }
   else 
-#line 106
+#line 107
     {
       sim_log_debug(152U, "node", "[info] TOS_Node: %i is a CHILD\n", TOS_NODE_ID);
     }
@@ -9308,8 +9777,55 @@ static inline void smartBraceletC$Boot$booted(void )
   smartBraceletC$SplitControl$start();
 }
 
+# 67 "/opt/tinyos-main-2.1.2/tos/interfaces/TaskBasic.nc"
+inline static error_t SerialActiveMessageC$startDone$postTask(void ){
+#line 67
+  unsigned char __nesc_result;
+#line 67
+
+#line 67
+  __nesc_result = SimSchedulerBasicP$TaskBasic$postTask(SerialActiveMessageC$startDone);
+#line 67
+
+#line 67
+  return __nesc_result;
+#line 67
+}
+#line 67
+# 70 "/opt/tinyos-main-2.1.2/tos/lib/tossim/SerialActiveMessageC.nc"
+static inline error_t SerialActiveMessageC$SplitControl$start(void )
+#line 70
+{
+  SerialActiveMessageC$startDone$postTask();
+  return SUCCESS;
+}
+
+# 104 "/opt/tinyos-main-2.1.2/tos/interfaces/SplitControl.nc"
+inline static error_t SerialStartP$SerialControl$start(void ){
+#line 104
+  unsigned char __nesc_result;
+#line 104
+
+#line 104
+  __nesc_result = SerialActiveMessageC$SplitControl$start();
+#line 104
+
+#line 104
+  return __nesc_result;
+#line 104
+}
+#line 104
+# 44 "/opt/tinyos-main-2.1.2/tos/lib/printf/SerialStartP.nc"
+static inline void SerialStartP$Boot$booted(void )
+#line 44
+{
+  SerialStartP$SerialControl$start();
+}
+
 # 60 "/opt/tinyos-main-2.1.2/tos/interfaces/Boot.nc"
 inline static void SimMainP$Boot$booted(void ){
+#line 60
+  SerialStartP$Boot$booted();
 #line 60
   smartBraceletC$Boot$booted();
 #line 60
@@ -11179,6 +11695,171 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$fireTimers(uin
   /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$postTask();
 }
 
+# 47 "/opt/tinyos-main-2.1.2/tos/lib/printf/generic_printf.h"
+static 
+#line 46
+int 
+_putchar(int c)
+{
+
+  if (c == '\n') {
+    lowlevel_putc('\r');
+    }
+#line 52
+  lowlevel_putc(c);
+
+  return c;
+}
+
+#line 208
+static int format_val(char *temp, long float_flag, int *cntr_val, int flag)
+{
+  left_val = 0;
+  right_val = 0;
+  if (*temp == '\0' && flag == 1) 
+    {
+      right_val = 3;
+      return 0;
+    }
+  while (*temp != '.' && *temp != '\0') 
+    {
+      if (*temp < '0' || *temp > '9') 
+        {
+          while (*temp) 
+            {
+              _putchar(* temp++);
+              (*cntr_val)++;
+            }
+          return -1;
+        }
+      else {
+        left_val = left_val * 10 + *temp - '0';
+        }
+#line 230
+      temp++;
+    }
+  if (*temp) {
+    temp++;
+    }
+  else {
+#line 235
+    return left_val;
+    }
+#line 236
+  while (*temp) 
+    {
+      if (*temp < '0' || *temp > '9') 
+        {
+          while (*temp) 
+            {
+              _putchar(* temp++);
+              (*cntr_val)++;
+            }
+          return -1;
+        }
+      else {
+        right_val = right_val * 10 + *temp - '0';
+        }
+#line 249
+      temp++;
+    }
+
+  return 0;
+}
+
+#line 100
+static void print_hex_oct(long int temp_var, int _div, int corr_factor, int ret_val, int sign, int *cntr_val)
+{
+  unsigned long int i1;
+#line 102
+  unsigned long int temp = temp_var;
+  int cntr = 0;
+#line 103
+  int neg_flag = 0;
+  char s1[40];
+
+  if (sign == 1 && temp_var < 0) 
+    {
+      temp = -temp_var;
+      neg_flag = 1;
+    }
+  if (temp == 0) {
+    s1[cntr++] = '0';
+    }
+#line 113
+  while (temp > 0) 
+    {
+      i1 = temp % _div;
+      temp = temp / _div;
+      if (i1 <= 9) {
+        s1[cntr] = i1 + '0';
+        }
+      else {
+#line 120
+        s1[cntr] = i1 + corr_factor - 9;
+        }
+#line 121
+      cntr++;
+    }
+
+  while (left_val - (right_val > cntr ? right_val : cntr + neg_flag) > 0) 
+    {
+      _putchar(' ');
+      left_val--;
+      (*cntr_val)++;
+    }
+
+  while (right_val - cntr > 0) 
+    {
+      s1[cntr++] = '0';
+    }
+
+  if (neg_flag == 1) {
+    s1[cntr++] = '-';
+    }
+  s1[cntr] = '\0';
+  strrev(s1);
+  _puts(s1);
+  *cntr_val += strlen(s1);
+}
+
+#line 82
+static 
+#line 81
+void 
+strrev(char *str)
+{
+  char *temp;
+#line 84
+  char c;
+  int len = strlen(str);
+
+#line 86
+  temp = str + len - 1;
+
+  while (str < temp) {
+
+      c = *str;
+      *str = *temp;
+
+      *temp = c;
+      str++;
+      temp--;
+    }
+}
+
+#line 66
+static 
+#line 65
+int 
+_puts(const char *s)
+{
+  while (*s != '\0') 
+    _putchar(* s++);
+
+  return 0;
+}
+
 # 79 "/opt/tinyos-main-2.1.2/tos/system/LedsP.nc"
 static void LedsP$Leds$led0Off(void )
 #line 79
@@ -11441,9 +12122,9 @@ static void HplAtm128Timer0AsyncP$configure_compare(sim_event_t *evt)
   evt->time = compareTime;
 }
 
-# 317 "smartBraceletC.nc"
+# 318 "smartBraceletC.nc"
 static void smartBraceletC$AMSend$sendDone(message_t *msg, error_t error)
-#line 317
+#line 318
 {
 
 
@@ -12333,6 +13014,10 @@ static int __nesc_nido_resolve(int __nesc_mote,
 
   /* Module LedsP */
 
+  /* Module SerialStartP */
+
+  /* Module SerialActiveMessageC */
+
   return -1;
 }
 /* Invoke static initialisers for mote '__nesc_mote' */
@@ -12557,5 +13242,9 @@ static void __nesc_nido_initialise(int __nesc_mote)
   /* Module CounterToLocalTimeC$0 */
 
   /* Module LedsP */
+
+  /* Module SerialStartP */
+
+  /* Module SerialActiveMessageC */
 
 }
