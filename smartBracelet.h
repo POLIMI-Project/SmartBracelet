@@ -11,6 +11,16 @@
 //length of the keys
 #define K_LEN 20
 
+#define FOREACH_KEY(KEY) \
+        KEY(04051998021208202200) \
+        KEY(05199802199912082022) \
+        KEY(19980219990412082022) \
+        KEY(19021999059812082022) \
+        /*KEY(PLUTO12AGOSTO2022XXX) \
+        KEY(PIPPO12AGOSTO2022XXX) \
+        KEY(GASTONE12AGOSTO2022X) \
+        KEY(PAPERONE12AGOSTO2022) \*/ //Maybe it is better to random generate them
+
 
 //timers values
 #define T_1 12500 // Random, we didn't know how much was it

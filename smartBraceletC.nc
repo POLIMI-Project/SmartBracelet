@@ -36,8 +36,8 @@ implementation{
 	//VARS
 
 	//pre-installed keys
-	uint8_t KeyParent[K_LEN]; //parent key
-	uint8_t KeyChild[K_LEN]; //child key
+	uint16_t KeyParent[K_LEN]; //parent key
+	uint16_t KeyChild[K_LEN]; //child key
 
 	//unicast address (after a pairing)
 	uint16_t UnicastPairingAddress; 
@@ -67,43 +67,42 @@ implementation{
 	task void alarmFalling();
 	task void alarmMissing();
 
-	//////////////////////////////////////////////////////////////////////////////
-	//BOOT
+	////////////////////////////////BOOT/////////////////////////////////////////////
+	
 	event void Boot.booted(){
-
-		//generating keys
+		//In this part the program generates all keys
 		int i, n;
 		dbg("node", "[info] Generating preloaded bracelets' keys..\n");
 		for(n=1; n<=N_MAX; n++){			
 			//if the node asigned from TOSSIM is the current
 			if (TOS_NODE_ID == n){
 				if((n % 2) == 1){
-					//odd nodes
-					//assignment
+					//odd nodes assignment
 					for (i=0; i<K_LEN; i++){
 						KeyParent[i] = n;
 						KeyChild[i] = n+1;
 					}
-					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent[0], K_LEN, KeyChild[0], K_LEN);
+					/*KeyParent = FOREACH_KEY[n]
+					KeyChild = FOREACH_KEY[n+1]*/
+					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent, K_LEN, KeyChild, K_LEN);
 				}else{
-					//even nodes
-					//assignment
+					//even nodes assignment
 					for (i=0; i<K_LEN; i++){
-						KeyParent[i] = n+1-1;
+						KeyParent[i] = n;
 						KeyChild[i] = n-1;
 					}
-					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent[0], K_LEN, KeyChild[0], K_LEN);
+					/*KeyParent = FOREACH_KEY[n]
+					KeyChild = FOREACH_KEY[n+1]*/
+					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent, K_LEN, KeyChild, K_LEN);
 				}
 			}
 		}
 
 		//bracelet type assignment
 		if((TOS_NODE_ID % 2) == 1){
-
 			//assign parent only if is odd
 			isParent = TRUE;
 			dbg("node", "[info] TOS_Node: %i is a PARENT\n", TOS_NODE_ID);
-
 		}else{
 			dbg("node", "[info] TOS_Node: %i is a CHILD\n", TOS_NODE_ID);
 		}
@@ -151,8 +150,7 @@ implementation{
 	}
 
 
-	//////////////////////////////////////////////////////////////////////////////
-	//TASKS
+	////////////////////////////////////// TASKS ////////////////////////////////////////
 	
 	//broadcast transmitter for initial pairing phase
 	task void transmitBroadcastDatagram() {
@@ -187,7 +185,7 @@ implementation{
 			if(call AMSend.send(AM_BROADCAST_ADDR, &packet, sizeof(pairing_datagram_t)) == SUCCESS){
 				//transmission success
 				dbg("radioDatagram", "[radio>>] Broadcast datagram Id: %u | Transmission is OK | with content: \n", datagram->ID);
-				dbg("radioDatagram", "\t Key: %ux%i \n", datagram->key[0], K_LEN);
+				dbg("radioDatagram", "\t Key: %ux%i \n", datagram->key, K_LEN);
 				dbg("radioDatagram", "\t Address: %u \n", datagram->address);
 				dbg("radioDatagram", "\t Type: %u \n", datagram->type);
 			}
@@ -278,8 +276,8 @@ implementation{
 			//transmission success
 			dbg("radioDatagram", "[radio>>] Child Unicast datagram Id: %u | Transmission OK | with content: \n", datagram->ID);
 			dbg("radioDatagram", "\t Status: %i \n", datagram->status);
-			dbg("radioDatagram", "\t PosX: %u \n", datagram->posX);
-			dbg("radioDatagram", "\t PosY: %u \n", datagram->posY);
+			dbg("radioDatagram", "\t Position X (Longitude): %u \n", datagram->posX);
+			dbg("radioDatagram", "\t Position Y (Latitude): %u \n", datagram->posY);
 		}
 		//increasing id counter for next transmission 
 		infoDatagramID++;
@@ -289,7 +287,7 @@ implementation{
 	task void alarmFalling(){
 
 		//log
-		dbg("radioDatagram", "[radio>>] !FALLING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", UnicastPairingAddress, coord_X, coord_Y);
+		dbg("radioDatagram", "[radio>>] !FALLING ALARM! received from child | Address: %u | Position X: %u / Position Y: %u \n", UnicastPairingAddress, coord_X, coord_Y);
 
 		//led blinking
 		call Leds.led0Toggle();
@@ -299,7 +297,7 @@ implementation{
 	task void alarmMissing(){
 
 		//log
-		dbg("radioDatagram", "[radio>>] !MISSING ALARM! received from child | Address: %u | PosX: %u / PosY: %u \n", UnicastPairingAddress, coord_X, coord_Y);
+		dbg("radioDatagram", "[radio>>] !MISSING ALARM! received from child | Address: %u | Position X: %u / Position Y: %u \n", UnicastPairingAddress, coord_X, coord_Y);
 
 		//led blinking
 		call Leds.led0Toggle();
@@ -307,12 +305,12 @@ implementation{
 		call Leds.led2Toggle();
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	//EVENTS
+	///////////////////////////////////////EVENTS//////////////////////////////////////////
+
 
 	//stop radio event
 	event void SplitControl.stopDone(error_t error){
-		;
+		dbg("radioDatagram", "Error found! Stop the radio signal");
 	}
 
 	//send success event (for generic transmission)
@@ -322,13 +320,11 @@ implementation{
 		if(&packet == msg && error == SUCCESS) {
 
 			//only if the ack listener is set to true
-			if(AckParent){
-
-				//acknowledgement received
+			if(AckParent){ //acknowledgement received
 				if(call PacketAcknowledgements.wasAcked(msg)) {
 
 					//log
-					dbg("radioDatagram", "[radio>>] ack received at time %s \n", sim_time_string());
+					dbg("radioDatagram", "[radio>>] The acknowledgment received at time %s \n", sim_time_string());
 
 					//deactivate ack listener
 					AckParent = FALSE;
@@ -336,7 +332,7 @@ implementation{
 				}else{
 
 					//log
-					dbg("radioDatagram", "[error] ack was not received at time %s \n", sim_time_string());
+					dbg("radioDatagram", "[error] The acknowledgment was not received at time %s \n", sim_time_string());
 
 					//retry to pair
 					post transmitUnicastDatagram();
@@ -378,7 +374,7 @@ implementation{
 			if(key_match){
 
 				//saving pairing address
-				dbg("radioRX","[radio<<] TOS_Node: %u has Key Parent: %ux%i | is paired | with TOS_Node: %u that has Key Child: %ux%i \n", TOS_NODE_ID, KeyParent[0], K_LEN, pairing_dat->address, pairing_dat->key[0], K_LEN);
+				dbg("radioRX","[radio<<] TOS_Node: %u has Key Parent: %ux%i | is paired | with TOS_Node: %u that has Key Child: %ux%i \n", TOS_NODE_ID, KeyParent, K_LEN, pairing_dat->address, pairing_dat->key, K_LEN);
 				UnicastPairingAddress = pairing_dat->address;
 
 				//calling unicast ack send

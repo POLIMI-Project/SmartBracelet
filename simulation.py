@@ -6,7 +6,8 @@ print "********************************************";
 
 import sys;
 import time;
-import os, pty, serial
+import os, pty
+#serial
 
 from TOSSIM import *;
 
@@ -33,7 +34,7 @@ simulation_out = open(simulation_outfile, "w");
 
 #Output selector
 print "\n";
-print "> Insert output format (1 terminal / 2 file log / 3 serial output) ..";
+print "> Insert output format (1: only in terminal / 2 save in a file log):\n";
 mode=int(raw_input('format:'))
 
 if mode==1:
@@ -42,9 +43,7 @@ if mode==1:
 elif mode==2:
     #file
     out = open(simulation_outfile, "w");
-elif mode==3:
-    #serial (first file, then forward)
-    out = open(simulation_outfile, "w");
+
 
 #Add debug channel
 print "Activate debug message on channel init"
@@ -127,25 +126,9 @@ for i in range(1, 5):
 #START
 print "Start simulation with TOSSIM! \n\n";
 
-#SIMULATION CONSTRAINTS AND SCENARIOS
-for i in range(0,5000):
-	if (i == 3000): 
-		node2.turnOff();
-		print "\n>>SHUTTING DOWN NODE 2..<<\n"
+for i in range(0,6000):
 	t.runNextEvent()
 	
 print "\nSimulation finished!\n";
 
-#serial forwarder
-if mode==3:
-    #configure the serial connections
-    ser = serial.Serial('/dev/ttyS0', 9600, rtscts=True, dsrdtr=True)  # open serial port
-    print " >>SERIAL FORWARDER>> serial port used: ", ser.portstr   # check which port was really used
-    print "\n >>remind to use this as a root!\n"
-    #ser.write("\n >serial test ALARM! \n go go ALARM! go :) ")  # write test string
-    with open('simulation.txt') as fp:
-        for line in fp:
-            ser.write(line);
-    ser.close(); # close serial port
 
-#END

@@ -24,7 +24,7 @@ implementation {
 	//Prints - used for Node-Red
 	//components SerialStartC;
 	//components SerialPrintfC;
-	//components SerialActiveMessageC as AM; 
+	//components SerialActiveMessageC as SAM; 
 	//CFLAGS += -I$(TOSDIR)/lib/printf in make file (doesn't work)
 	
 	/////////////////////////////////////////////////////////
