@@ -39,6 +39,7 @@ implementation{
 	//pre-installed keys
 	uint16_t KeyParent[K_LEN]; //parent key
 	uint16_t KeyChild[K_LEN]; //child key
+	char a[20] = "asdone";
 
 	//unicast address (after a pairing)
 	uint16_t UnicastPairingAddress; 
@@ -129,11 +130,15 @@ implementation{
 	//Timer Pairing event (pairing)
 	event void TimerPairing.fired(){
 		dbg("radioTX", "[info] Timer Pairing fired at %s \n", sim_time_string());
+		printf("The 2 Bracelet have been correctly paired, congratulation!!\n");
+	  	printfflush();
 		post transmitBroadcastDatagram();
 	}
 
 	//Timer Transmitting event (child)
 	event void TimerTransmitting.fired(){
+		printf("INFO message sent from the Child Bracelet\n");
+	  	printfflush();
 		dbg("radioTX", "[info] Timer Transmitting fired at %s \n", sim_time_string());
 		call Leds.led0Off();
 		call Leds.led1Off();
@@ -143,11 +148,12 @@ implementation{
 	//timer Alert event (alarm)
 	event void TimerAlert.fired(){
 		dbg("radioTX", "[info] Timer Alert fired at %s (missing messages from child in last %i ms) \n", sim_time_string(), T_3);
-		//printf("Missing message\n");
 		call Leds.led0Off();
 		call Leds.led1Off();
 		call Leds.led2Off();
 		post alarmMissing();
+		printf("You child is out of range, PAY ATTENTION!!\n");
+	  	printfflush();
 	}
 
 
