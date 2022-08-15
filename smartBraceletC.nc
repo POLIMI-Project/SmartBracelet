@@ -39,7 +39,8 @@ implementation{
 	//pre-installed keys
 	uint16_t KeyParent[K_LEN]; //parent key
 	uint16_t KeyChild[K_LEN]; //child key
-	char a[20] = "asdone";
+	char ParentKey1[K_LEN] = "PLUTO12AGOSTO2022XXX";
+	char ParentKey2[K_LEN] = "GASTONE12AGOSTO2022X";
 
 	//unicast address (after a pairing)
 	uint16_t UnicastPairingAddress; 
