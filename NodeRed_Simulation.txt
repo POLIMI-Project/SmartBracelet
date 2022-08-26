@@ -1,0 +1,259 @@
+[
+    {
+        "id": "8c0499d9.e3777",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2be54796.c206e8",
+        "type": "tcp in",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "server": "client",
+        "host": "localhost",
+        "port": "60003",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "\\n",
+        "topic": "",
+        "base64": false,
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "693f286f.d102c8",
+                "ad94dd28.f62408"
+            ]
+        ]
+    },
+    {
+        "id": "3c037f6c.15ec68",
+        "type": "tcp in",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "server": "client",
+        "host": "localhost",
+        "port": "60001",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "\\n",
+        "topic": "",
+        "base64": false,
+        "x": 210,
+        "y": 420,
+        "wires": [
+            [
+                "f06f9ef0.0e82d",
+                "4d632860.2d0418"
+            ]
+        ]
+    },
+    {
+        "id": "693f286f.d102c8",
+        "type": "serial request",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "serial": "9888451e.4ce62",
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "b773d9c9.9ed37"
+            ]
+        ]
+    },
+    {
+        "id": "aabb513.0a0e9b",
+        "type": "ui_chart",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "group": "b49195f4.60adf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Out of range (Parent 2)",
+        "chartType": "pie",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Child far",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 1060,
+        "y": 320,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ad94dd28.f62408",
+        "type": "debug",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 990,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b773d9c9.9ed37",
+        "type": "function",
+        "z": "8c0499d9.e3777",
+        "name": "Is your child in range?",
+        "func": "var input = msg\nif (input.payload == undefined){\n    msg.topic=\"Out of range\"\n    msg.payload = 1;\n}\nelse{\n    msg.topic=\"Child in range\"\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 800,
+        "y": 320,
+        "wires": [
+            [
+                "aabb513.0a0e9b",
+                "ad94dd28.f62408"
+            ]
+        ]
+    },
+    {
+        "id": "f06f9ef0.0e82d",
+        "type": "serial request",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "serial": "9888451e.4ce62",
+        "x": 560,
+        "y": 420,
+        "wires": [
+            [
+                "18fa7dba.a1c382"
+            ]
+        ]
+    },
+    {
+        "id": "6147fb84.b3883c",
+        "type": "ui_chart",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "group": "b49195f4.60adf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Out of range (Parent 1)",
+        "chartType": "pie",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Child far",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 1060,
+        "y": 420,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4d632860.2d0418",
+        "type": "debug",
+        "z": "8c0499d9.e3777",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1030,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "18fa7dba.a1c382",
+        "type": "function",
+        "z": "8c0499d9.e3777",
+        "name": "Is your child in range?",
+        "func": "var input = msg\nif (input.payload == undefined){\n    msg.topic=\"Out of range\"\n    msg.payload = 1;\n}\nelse{\n    msg.topic=\"Child in range\"\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 800,
+        "y": 420,
+        "wires": [
+            [
+                "6147fb84.b3883c",
+                "4d632860.2d0418"
+            ]
+        ]
+    },
+    {
+        "id": "9888451e.4ce62",
+        "type": "serial-port",
+        "z": "",
+        "serialport": "/dev/tty",
+        "serialbaud": "57600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "newline": "\\n",
+        "bin": "bin",
+        "out": "char",
+        "addchar": true,
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "b49195f4.60adf8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Child",
+        "tab": "3b567ed3.cff332",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "3b567ed3.cff332",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Temp",
+        "icon": "Thermostat"
+    }
+]

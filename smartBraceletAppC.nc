@@ -1,4 +1,5 @@
 #include "smartBracelet.h"
+#define NEW_PRINTF_SEMANTICS
 #include "printf.h"
 
 configuration smartBraceletAppC {}
@@ -23,8 +24,9 @@ implementation {
 	components LedsC;
 
 	//Prints - used for Debug and Node-Red
-	components SerialStartC;
-	//components SerialPrintfC;
+	//components PrintfC;
+    components SerialStartC;
+	components SerialPrintfC;
 	components SerialActiveMessageC as SAM;
 	
 	/////////////////////////////////////////////////////////
