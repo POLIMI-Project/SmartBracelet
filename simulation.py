@@ -7,13 +7,12 @@ print "********************************************";
 import sys;
 import time;
 import os, pty
-#serial
 
 from TOSSIM import *;
 
 t = Tossim([]);
 
-#Imports
+#Import the topology
 topofile="topology.txt";
 modelfile="meyer-heavy.txt";
 
@@ -34,7 +33,7 @@ simulation_out = open(simulation_outfile, "w");
 
 #Output selector
 print "\n";
-print "> Insert output format (1: only in terminal / 2 save in a file log):\n";
+print "> Please, insert output format (1: only in terminal / 2 save in a file log):\n";
 mode=int(raw_input('format:'))
 
 if mode==1:

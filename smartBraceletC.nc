@@ -39,9 +39,7 @@ implementation{
 	//pre-installed keys
 	uint16_t KeyParent[K_LEN]; //parent key
 	uint16_t KeyChild[K_LEN]; //child key
-	char ParentKey1[K_LEN] = "PLUTO12AGOSTO2022XXX";
-	char ParentKey2[K_LEN] = "GASTONE12AGOSTO2022X";
-
+	
 	//unicast address (after a pairing)
 	uint16_t UnicastPairingAddress; 
 
@@ -85,7 +83,8 @@ implementation{
 						KeyParent[i] = n;
 						KeyChild[i] = n+1;
 					}
-					/*KeyParent = FOREACH_KEY[n]
+					/* Old Version. before randomize
+					KeyParent = FOREACH_KEY[n]
 					KeyChild = FOREACH_KEY[n+1]*/
 					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent, K_LEN, KeyChild, K_LEN);
 				}else{
@@ -94,7 +93,8 @@ implementation{
 						KeyParent[i] = n;
 						KeyChild[i] = n-1;
 					}
-					/*KeyParent = FOREACH_KEY[n]
+					/* Old Version, before randomize
+					KeyParent = FOREACH_KEY[n]
 					KeyChild = FOREACH_KEY[n+1]*/
 					dbg("node", "[info] Node: %i | Key Parent: %ux%i | Key Child: %ux%i\n", n, KeyParent, K_LEN, KeyChild, K_LEN);
 				}
