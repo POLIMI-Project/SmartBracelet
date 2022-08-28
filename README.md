@@ -12,11 +12,11 @@ For the simulation we have used Cooja, making sure that every part of the code f
 2. **Operation mode**: Has to do with the messages transmitted periodically from the child to the respective parent. These messages contain information about the position of the child and the kinematic status (that can be STANDING 3 WALKING 4 RUNNING 5 or FALLING 6).
 3. **Alert mode**: In case of the kinematic status being a FALLING message the parent's bracelet sends a fall alarm. If the parent does not receive any message within a minute, a MISSING alarm is sent.
 
-Each file making the simulation possible is explained in the project report.
+Each file making the simulation possible is explained in the [**project report**](https://github.com/Rkomi98/SmartBracelet/blob/help/Project_Report.pdf).
 
-All the simulation is performed in Cooja and it is connected with NodeRed. You can find the code in the file " NodeRed_Simulation.txt".
+All the simulation is performed in Cooja and it is connected with NodeRed. You can find the code in the file ["NodeRed_Simulation.txt"](https://github.com/Rkomi98/SmartBracelet/blob/help/NodeRed_Simulation.txt).
 
-To see how the simulation works you can download the video provided in this repository, named "Simulazione.mp4".
+To see how the simulation works you can download the video provided in this repository, named ["Simulazione.mp4"](https://github.com/Rkomi98/SmartBracelet/blob/help/Simulazione.mp4).
 
 
 
