@@ -13,6 +13,8 @@ For the simulation we have used Cooja, making sure that every part of the code f
 3. Alert mode: In case of the kinematic status being a FALLING message the parent's bracelet sends a fall alarm. If the parent does not receive any message within a minute a MISSING alarm is sent.
 
 Each file making the simulation possible is explained in the project report.
+All the simulation is performed in Cooja and it is connected with NodeRed. You can find the code in the file " NodeRed_Simulation.txt".
+To see how the simulation works you can download the video provided in this repository, named "Simulazione.mp4".
 
 
 
