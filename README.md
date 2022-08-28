@@ -1,6 +1,6 @@
 # SmartBracelet
 
-In this repository we put all the code of the IoT project of the course of Politecnico di Milano about Smart Bracelet
+In this repository we put all the code of the IoT project of the course of Politecnico di Milano about "Smart Bracelet".
 
 
 In this Project we implemented a software using TinyOs and NodeRed.
